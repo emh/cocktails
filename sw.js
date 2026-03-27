@@ -1,10 +1,11 @@
-const SHELL_CACHE = "cocktails-shell-v4";
-const DATA_CACHE = "cocktails-data-v4";
+const SHELL_CACHE = "cocktails-shell-v5";
+const DATA_CACHE = "cocktails-data-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./app.css",
   "./app.js",
+  "./astro-bg-worker.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",

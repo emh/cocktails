@@ -5,6 +5,9 @@ const DATA_URLS = Object.freeze({
 
 const DISPLAY_LIMIT = 9;
 const SEARCH_LIMIT = 18;
+const ASTRO_SCENE_MIN_MS = 28000;
+const ASTRO_SCENE_MAX_MS = 46000;
+const ASTRO_FADE_DURATION_S = 7.2;
 const FAVORITES_STORAGE_KEY = "cocktail-constellation-favorites";
 const historyStack = [];
 const rolePriority = [
@@ -30,6 +33,29 @@ const state = {
   favoritesOpen: false,
   searchOpen: false,
   isAnimating: false,
+};
+
+const astroBackground = {
+  canvas: null,
+  ctx: null,
+  worker: null,
+  width: 0,
+  height: 0,
+  dpr: 1,
+  scene: null,
+  currentSeed: 0,
+  frontLayers: null,
+  backLayers: null,
+  fade: 1,
+  driftT: 0,
+  lastTs: performance.now(),
+  phaseA: 0,
+  phaseB: 0,
+  nextTransitionAt: 0,
+  pending: false,
+  queuedRender: null,
+  rafId: 0,
+  isSupported: true,
 };
 
 function norm(value) {
@@ -540,15 +566,6 @@ function clampValue(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function hashString(value) {
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return hash >>> 0;
-}
-
 function mulberry32(seed) {
   let nextSeed = seed >>> 0;
   return () => {
@@ -558,6 +575,245 @@ function mulberry32(seed) {
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
+}
+
+function pickSeeded(items, random) {
+  return items[Math.floor(random() * items.length)];
+}
+
+function nextAstroSeed() {
+  return (Math.random() * 0xffffffff) >>> 0;
+}
+
+function makeAstroScene(seed) {
+  const random = mulberry32(seed);
+  const palettes = [
+    { name: "blue dusk", bg: [4, 7, 12], haze1: [28, 48, 84], haze2: [60, 92, 136], star: [226, 232, 244] },
+    { name: "cold graphite", bg: [3, 5, 8], haze1: [20, 32, 50], haze2: [60, 78, 104], star: [232, 236, 242] },
+    { name: "violet ash", bg: [4, 5, 10], haze1: [34, 30, 58], haze2: [82, 78, 118], star: [228, 232, 244] },
+    { name: "teal night", bg: [3, 7, 10], haze1: [20, 42, 52], haze2: [62, 92, 104], star: [226, 236, 242] },
+  ];
+
+  return {
+    seed,
+    palette: pickSeeded(palettes, random),
+    starCountNear: Math.floor(28 + random() * 34),
+    starCountMid: Math.floor(110 + random() * 120),
+    starCountFar: Math.floor(240 + random() * 220),
+    brightCount: Math.floor(4 + random() * 5),
+    dustAngle: random() * Math.PI,
+    bandY: 0.22 + random() * 0.56,
+    bandWidth: 0.16 + random() * 0.16,
+    hazeStrength: 0.16 + random() * 0.08,
+    dustStrength: 0.2 + random() * 0.14,
+    vignette: 0.18 + random() * 0.08,
+    grain: 0.01 + random() * 0.008,
+    drift1x: (random() - 0.5) * 12,
+    drift1y: (random() - 0.5) * 8,
+    drift2x: (random() - 0.5) * 7,
+    drift2y: (random() - 0.5) * 5,
+    twinkleRate: 0.04 + random() * 0.08,
+    twinkleDepth: 0.01 + random() * 0.018,
+    crossfadeTint: 0.016 + random() * 0.014,
+  };
+}
+
+function closeAstroLayers(layers) {
+  if (!layers) return;
+  for (const layer of layers) {
+    layer?.close?.();
+  }
+}
+
+function scheduleNextAstroTransition(now = performance.now()) {
+  astroBackground.nextTransitionAt = now + lerp(ASTRO_SCENE_MIN_MS, ASTRO_SCENE_MAX_MS, Math.random());
+}
+
+function sizeAstroBackground() {
+  if (!astroBackground.canvas || !astroBackground.ctx) return;
+
+  const viewportHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--app-height")) || window.innerHeight;
+  astroBackground.dpr = Math.max(1, Math.min(1.75, window.devicePixelRatio || 1));
+  astroBackground.width = Math.max(1, Math.floor(window.innerWidth));
+  astroBackground.height = Math.max(1, Math.floor(viewportHeight));
+  astroBackground.canvas.width = Math.floor(astroBackground.width * astroBackground.dpr);
+  astroBackground.canvas.height = Math.floor(astroBackground.height * astroBackground.dpr);
+  astroBackground.ctx.setTransform(astroBackground.dpr, 0, 0, astroBackground.dpr, 0, 0);
+}
+
+function queueAstroScene(regenerate = false) {
+  if (!astroBackground.isSupported || !astroBackground.worker) return;
+
+  if (regenerate || !astroBackground.scene) {
+    astroBackground.currentSeed = nextAstroSeed();
+    astroBackground.scene = makeAstroScene(astroBackground.currentSeed);
+    astroBackground.phaseA = Math.random() * Math.PI * 2;
+    astroBackground.phaseB = Math.random() * Math.PI * 2;
+    scheduleNextAstroTransition();
+  }
+
+  astroBackground.queuedRender = {
+    width: astroBackground.width,
+    height: astroBackground.height,
+    dpr: astroBackground.dpr,
+    scene: astroBackground.scene,
+  };
+
+  if (astroBackground.pending) return;
+  flushAstroRenderQueue();
+}
+
+function flushAstroRenderQueue() {
+  if (!astroBackground.worker || !astroBackground.queuedRender || astroBackground.pending || !astroBackground.isSupported) return;
+  astroBackground.pending = true;
+  astroBackground.worker.postMessage({
+    type: "render",
+    ...astroBackground.queuedRender,
+  });
+  astroBackground.queuedRender = null;
+}
+
+function ensureAstroWorker() {
+  if (astroBackground.worker || !astroBackground.isSupported) return;
+
+  try {
+    astroBackground.worker = new Worker("./astro-bg-worker.js");
+  } catch (error) {
+    astroBackground.isSupported = false;
+    console.warn("Astro background worker unavailable", error);
+    return;
+  }
+
+  astroBackground.worker.addEventListener("message", (event) => {
+    const message = event.data;
+    if (message?.type === "unsupported") {
+      astroBackground.isSupported = false;
+      astroBackground.worker?.terminate();
+      astroBackground.worker = null;
+      closeAstroLayers(astroBackground.frontLayers);
+      closeAstroLayers(astroBackground.backLayers);
+      astroBackground.frontLayers = null;
+      astroBackground.backLayers = null;
+      return;
+    }
+
+    if (message?.type !== "frame") return;
+
+    astroBackground.pending = false;
+    if (!astroBackground.frontLayers) {
+      closeAstroLayers(astroBackground.frontLayers);
+      astroBackground.frontLayers = message.layers;
+      astroBackground.backLayers = null;
+      astroBackground.fade = 1;
+      astroBackground.canvas?.classList.add("is-ready");
+    } else {
+      closeAstroLayers(astroBackground.backLayers);
+      astroBackground.backLayers = message.layers;
+      astroBackground.fade = 0;
+      astroBackground.canvas?.classList.add("is-ready");
+    }
+
+    flushAstroRenderQueue();
+  });
+
+  astroBackground.worker.addEventListener("error", (error) => {
+    astroBackground.isSupported = false;
+    astroBackground.worker?.terminate();
+    astroBackground.worker = null;
+    console.warn("Astro background worker failed", error);
+  });
+}
+
+function drawAstroLayer(image, alpha, dx, dy, extraScale = 1) {
+  if (!image || !astroBackground.ctx) return;
+  const scale = 1.01 * extraScale;
+  const drawWidth = astroBackground.width * scale;
+  const drawHeight = astroBackground.height * scale;
+  const offsetX = (astroBackground.width - drawWidth) * 0.5 + dx;
+  const offsetY = (astroBackground.height - drawHeight) * 0.5 + dy;
+  astroBackground.ctx.save();
+  astroBackground.ctx.globalAlpha = alpha;
+  astroBackground.ctx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+  astroBackground.ctx.restore();
+}
+
+function renderAstroComposite(layers, alpha, driftMultiplier) {
+  if (!layers || !astroBackground.scene) return;
+
+  const [backgroundLayer, midgroundLayer, foregroundLayer] = layers;
+  const time = astroBackground.driftT;
+  const dx1 = Math.sin(time * 0.03 + astroBackground.phaseA) * astroBackground.scene.drift1x * driftMultiplier;
+  const dy1 = Math.cos(time * 0.024 + astroBackground.phaseA * 0.7) * astroBackground.scene.drift1y * driftMultiplier;
+  const dx2 = Math.sin(time * 0.052 + astroBackground.phaseB) * astroBackground.scene.drift2x * driftMultiplier;
+  const dy2 = Math.cos(time * 0.041 + astroBackground.phaseB * 0.8) * astroBackground.scene.drift2y * driftMultiplier;
+  const twinkle = 1 + Math.sin(time * astroBackground.scene.twinkleRate) * astroBackground.scene.twinkleDepth;
+
+  drawAstroLayer(backgroundLayer, alpha, dx1 * 0.18, dy1 * 0.18, 1);
+  drawAstroLayer(midgroundLayer, alpha, dx1 * 0.42 + dx2 * 0.1, dy1 * 0.42 + dy2 * 0.1, 1);
+  drawAstroLayer(foregroundLayer, alpha * twinkle, dx2, dy2, 1);
+
+  astroBackground.ctx.save();
+  astroBackground.ctx.globalAlpha = alpha * astroBackground.scene.crossfadeTint;
+  astroBackground.ctx.fillStyle = "rgba(210,220,255,0.35)";
+  astroBackground.ctx.fillRect(0, 0, astroBackground.width, astroBackground.height);
+  astroBackground.ctx.restore();
+}
+
+function frameAstroBackground(timestamp) {
+  astroBackground.rafId = window.requestAnimationFrame(frameAstroBackground);
+  if (!astroBackground.ctx || !astroBackground.isSupported) return;
+
+  const dt = Math.min(0.05, (timestamp - astroBackground.lastTs) / 1000);
+  astroBackground.lastTs = timestamp;
+  if (!document.hidden && !prefersReducedMotion()) {
+    astroBackground.driftT += dt;
+  }
+
+  if (!document.hidden && !prefersReducedMotion() && timestamp >= astroBackground.nextTransitionAt && !astroBackground.pending) {
+    queueAstroScene(true);
+  }
+
+  astroBackground.ctx.clearRect(0, 0, astroBackground.width, astroBackground.height);
+
+  if (astroBackground.backLayers && astroBackground.fade < 1) {
+    astroBackground.fade = Math.min(1, astroBackground.fade + dt / ASTRO_FADE_DURATION_S);
+    renderAstroComposite(astroBackground.frontLayers, 1 - astroBackground.fade, 0.84);
+    renderAstroComposite(astroBackground.backLayers, astroBackground.fade, 1);
+    if (astroBackground.fade >= 1) {
+      closeAstroLayers(astroBackground.frontLayers);
+      astroBackground.frontLayers = astroBackground.backLayers;
+      astroBackground.backLayers = null;
+    }
+    return;
+  }
+
+  renderAstroComposite(astroBackground.frontLayers, 1, 1);
+}
+
+function initAstroBackground() {
+  astroBackground.canvas = document.getElementById("astroBackground");
+  astroBackground.ctx = astroBackground.canvas?.getContext("2d");
+  if (!astroBackground.canvas || !astroBackground.ctx) {
+    astroBackground.isSupported = false;
+    return;
+  }
+
+  ensureAstroWorker();
+  if (!astroBackground.worker) return;
+
+  sizeAstroBackground();
+  queueAstroScene(true);
+  astroBackground.lastTs = performance.now();
+  if (!astroBackground.rafId) {
+    astroBackground.rafId = window.requestAnimationFrame(frameAstroBackground);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    astroBackground.lastTs = performance.now();
+    if (!document.hidden && !prefersReducedMotion() && performance.now() >= astroBackground.nextTransitionAt) {
+      queueAstroScene(true);
+    }
+  });
 }
 
 function normalizeAngle(angle) {
@@ -641,53 +897,6 @@ function applyViewportBias(angle, direction, index) {
 
   const target = targetBiasAngle(direction, bias.axis, index);
   return lerpAngle(angle, target, bias.strength);
-}
-
-function backgroundLightTargets(nodeId) {
-  const random = mulberry32(hashString(nodeId || "cocktails"));
-  const aspect = window.innerWidth / Math.max(window.innerHeight, 1);
-  const portrait = aspect < 0.95;
-  const landscape = aspect > 1.3;
-
-  const anchors = portrait
-    ? [
-        { x: [10, 24], y: [8, 22] },
-        { x: [34, 64], y: [30, 52] },
-        { x: [70, 88], y: [10, 24] },
-      ]
-    : landscape
-      ? [
-          { x: [8, 24], y: [14, 30] },
-          { x: [36, 60], y: [30, 50] },
-          { x: [68, 90], y: [10, 26] },
-        ]
-      : [
-          { x: [10, 24], y: [10, 22] },
-          { x: [38, 62], y: [32, 52] },
-          { x: [72, 88], y: [12, 26] },
-        ];
-
-  return anchors.map((anchor, index) => {
-    const x = lerp(anchor.x[0], anchor.x[1], random());
-    const y = lerp(anchor.y[0], anchor.y[1], random());
-    const scale = lerp(0.92, 1.34, random());
-    const opacity = lerp(index === 1 ? 0.2 : 0.16, index === 1 ? 0.34 : 0.28, random());
-    return { x, y, scale, opacity };
-  });
-}
-
-function repositionBackgroundLights(nodeId) {
-  const lights = [...document.querySelectorAll(".background-light")];
-  const targets = backgroundLightTargets(nodeId);
-
-  lights.forEach((light, index) => {
-    const target = targets[index];
-    if (!target) return;
-    light.style.left = `${target.x}%`;
-    light.style.top = `${target.y}%`;
-    light.style.transform = `translate(-50%, -50%) scale(${target.scale})`;
-    light.style.opacity = `${target.opacity}`;
-  });
 }
 
 function radiusForMoveType(type) {
@@ -1150,7 +1359,6 @@ async function goTo(id, options = {}) {
   state.currentId = id;
   setFavoritesOpen(false);
   setSearchOpen(false, { clear: true });
-  repositionBackgroundLights(id);
   try {
     await renderGraph(node, options);
     updateFavoritesUi();
@@ -1351,14 +1559,23 @@ function hookUi() {
 
   window.addEventListener("resize", () => {
     syncViewportHeight();
+    sizeAstroBackground();
+    queueAstroScene(false);
     if (state.currentId) {
-      repositionBackgroundLights(state.currentId);
       void renderGraph(byId(state.currentId));
     }
   });
 
-  window.visualViewport?.addEventListener("resize", syncViewportHeight);
-  window.visualViewport?.addEventListener("scroll", syncViewportHeight);
+  window.visualViewport?.addEventListener("resize", () => {
+    syncViewportHeight();
+    sizeAstroBackground();
+    queueAstroScene(false);
+  });
+  window.visualViewport?.addEventListener("scroll", () => {
+    syncViewportHeight();
+    sizeAstroBackground();
+    queueAstroScene(false);
+  });
 }
 
 async function registerServiceWorker() {
@@ -1411,6 +1628,7 @@ async function bootstrap() {
     state.graphData = buildGraphData(graphJson, movesJson);
     syncFavoriteIds(readFavoriteIds());
     hookUi();
+    initAstroBackground();
     setControlsEnabled(true);
     await goTo(chooseInitialId());
     setAppState("ready");
