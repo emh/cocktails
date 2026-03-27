@@ -1,11 +1,14 @@
-const SHELL_CACHE = "cocktails-shell-v2";
-const DATA_CACHE = "cocktails-data-v2";
+const SHELL_CACHE = "cocktails-shell-v3";
+const DATA_CACHE = "cocktails-data-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./app.css",
   "./app.js",
   "./manifest.webmanifest",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/apple-touch-icon.png",
   "./icons/icon.svg",
 ];
 

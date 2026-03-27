@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Subtle Astro Drift Background</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #04070c;
+  }
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #hud {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(8, 12, 20, 0.42);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    color: rgba(230, 238, 248, 0.9);
+    font-size: 12px;
+  }
+  button {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: inherit;
+    border-radius: 999px;
+    padding: 7px 10px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  button:hover { background: rgba(255,255,255,0.08); }
+  #meta { opacity: 0.72; }
+  @media (max-width: 640px) {
+    #hud {
+      left: 10px;
+      top: 10px;
+      right: 10px;
+      border-radius: 14px;
+      font-size: 11px;
+    }
+  }
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="hud">
+  <button id="regenBtn">regenerate</button>
+  <button id="shuffleBtn">new seed</button>
+  <button id="toggleBtn">pause drift</button>
+  <span id="meta">subtle field</span>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('view');
+  const ctx = canvas.getContext('2d');
+  const regenBtn = document.getElementById('regenBtn');
+  const shuffleBtn = document.getElementById('shuffleBtn');
+  const toggleBtn = document.getElementById('toggleBtn');
+  const metaEl = document.getElementById('meta');
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let worker = null;
+  let pending = false;
+
+  let front = null;
+  let back = null;
+  let fade = 1;
+  const fadeDuration = 2.8;
+
+  let currentSeed = (Math.random() * 0xffffffff) >>> 0;
+  let scene = null;
+  let driftOn = true;
+  let driftT = 0;
+  let lastTs = performance.now();
+  let phaseA = 0;
+  let phaseB = 0;
+
+  function mulberry32(seed) {
+    let t = seed >>> 0;
+    return function() {
+      t += 0x6D2B79F5;
+      let x = Math.imul(t ^ (t >>> 15), 1 | t);
+      x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
+      return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function pick(arr, rnd) {
+    return arr[(rnd() * arr.length) | 0];
+  }
+
+  function makeScene(seed) {
+    const rnd = mulberry32(seed);
+    const palettes = [
+      { name: 'blue dusk', bg: [4,7,12], haze1: [38,66,104], haze2: [74,112,152], star: [224,232,245] },
+      { name: 'cold graphite', bg: [3,5,8], haze1: [32,42,58], haze2: [78,92,112], star: [232,236,242] },
+      { name: 'violet ash', bg: [5,6,11], haze1: [52,46,76], haze2: [96,92,128], star: [228,232,244] },
+      { name: 'teal night', bg: [3,7,10], haze1: [30,58,64], haze2: [84,112,118], star: [226,236,242] }
+    ];
+    const fieldType = pick(['dense cloud', 'nebula drift', 'dust sea'], rnd);
+    return {
+      seed,
+      palette: pick(palettes, rnd),
+      fieldType,
+      starCountNear: Math.floor(60 + rnd() * 90),
+      starCountMid: Math.floor(180 + rnd() * 260),
+      starCountFar: Math.floor(400 + rnd() * 700),
+      brightCount: Math.floor(6 + rnd() * 12),
+      dustAngle: rnd() * Math.PI,
+      bandY: 0.2 + rnd() * 0.6,
+      bandWidth: 0.18 + rnd() * 0.18,
+      hazeStrength: 0.22 + rnd() * 0.18,
+      dustStrength: 0.28 + rnd() * 0.25,
+      vignette: 0.16 + rnd() * 0.12,
+      grain: 0.012 + rnd() * 0.015,
+      drift1x: (rnd() - 0.5) * 14,
+      drift1y: (rnd() - 0.5) * 10,
+      drift2x: (rnd() - 0.5) * 9,
+      drift2y: (rnd() - 0.5) * 7,
+      twinkleRate: 0.05 + rnd() * 0.12,
+      twinkleDepth: 0.015 + rnd() * 0.03,
+      crossfadeTint: 0.025 + rnd() * 0.02
+    };
+  }
+
+  function updateMeta() {
+    metaEl.textContent = scene.fieldType + ' • ' + scene.palette.name + ' • seed ' + scene.seed;
+  }
+
+  function resize() {
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    width = Math.max(1, Math.floor(window.innerWidth));
+    height = Math.max(1, Math.floor(window.innerHeight));
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    renderScene(true);
+  }
+
+  function createWorker() {
+    const source = `
+self.onmessage = (e) => {
+  const msg = e.data;
+  if (msg.type !== 'render') return;
+  const { width, height, dpr, scene } = msg;
+  const w = Math.max(1, Math.floor(width * dpr));
+  const h = Math.max(1, Math.floor(height * dpr));
+
+  const bg = new OffscreenCanvas(w, h);
+  const mg = new OffscreenCanvas(w, h);
+  const fg = new OffscreenCanvas(w, h);
+
+  renderBackground(bg.getContext('2d', { alpha: false }), w, h, scene);
+  renderMidground(mg.getContext('2d', { alpha: true }), w, h, scene);
+  renderForeground(fg.getContext('2d', { alpha: true }), w, h, scene);
+
+  const b0 = bg.transferToImageBitmap();
+  const b1 = mg.transferToImageBitmap();
+  const b2 = fg.transferToImageBitmap();
+  self.postMessage({ type: 'frame', layers: [b0, b1, b2], scene }, [b0, b1, b2]);
+};
+
+function mulberry32(seed) {
+  let t = seed >>> 0;
+  return function() {
+    t += 0x6D2B79F5;
+    let x = Math.imul(t ^ (t >>> 15), 1 | t);
+    x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function clamp(x,a,b){ return x < a ? a : x > b ? b : x; }
+function lerp(a,b,t){ return a + (b - a) * t; }
+function smoothstep(a,b,x){ const t = clamp((x-a)/(b-a), 0, 1); return t*t*(3-2*t); }
+function rgba(rgb,a){ return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + a + ')'; }
+function mixRgb(a,b,t){ return [Math.round(lerp(a[0],b[0],t)), Math.round(lerp(a[1],b[1],t)), Math.round(lerp(a[2],b[2],t))]; }
+function hash2(x,y,seed){
+  let h = Math.imul((x | 0) ^ 374761393, 668265263);
+  h = Math.imul(h ^ ((y | 0) + ((seed * 1597334677) | 0)), 2246822519);
+  h ^= h >>> 13;
+  h = Math.imul(h, 3266489917);
+  h ^= h >>> 16;
+  return (h >>> 0) / 4294967296;
+}
+function valueNoise(x,y,seed){
+  const x0 = Math.floor(x), y0 = Math.floor(y);
+  const x1 = x0 + 1, y1 = y0 + 1;
+  const tx = x - x0, ty = y - y0;
+  const sx = tx * tx * (3 - 2 * tx);
+  const sy = ty * ty * (3 - 2 * ty);
+  const n00 = hash2(x0,y0,seed);
+  const n10 = hash2(x1,y0,seed);
+  const n01 = hash2(x0,y1,seed);
+  const n11 = hash2(x1,y1,seed);
+  const nx0 = n00 + (n10 - n00) * sx;
+  const nx1 = n01 + (n11 - n01) * sx;
+  return nx0 + (nx1 - nx0) * sy;
+}
+function fbm(x,y,seed,oct=5){
+  let sum = 0, amp = 0.5, freq = 1, norm = 0;
+  for (let i = 0; i < oct; i++) {
+    sum += valueNoise(x * freq, y * freq, seed + i * 977) * amp;
+    norm += amp;
+    freq *= 2.01;
+    amp *= 0.5;
+  }
+  return sum / norm;
+}
+function domainWarp(x,y,seed){
+  const qx = fbm(x * 1.15 + 8.3, y * 1.15 + 2.1, seed + 101, 4);
+  const qy = fbm(x * 1.15 - 5.9, y * 1.15 + 7.4, seed + 173, 4);
+  return fbm(x + (qx - 0.5) * 1.35, y + (qy - 0.5) * 1.35, seed + 233, 5);
+}
+function sampleStarAlpha(rnd, tier){
+  if (tier === 0) return 0.04 + Math.pow(rnd(), 1.8) * 0.12;
+  if (tier === 1) return 0.07 + Math.pow(rnd(), 1.5) * 0.18;
+  return 0.1 + Math.pow(rnd(), 1.2) * 0.25;
+}
+function starColor(rnd, base){
+  const t = rnd();
+  if (t < 0.7) return base;
+  if (t < 0.88) return mixRgb(base, [180, 205, 240], 0.55);
+  return mixRgb(base, [255, 221, 190], 0.45);
+}
+
+function renderBackground(ctx,w,h,scene){
+  const rnd = mulberry32(scene.seed);
+  const image = ctx.createImageData(w, h);
+  const data = image.data;
+  const bg = scene.palette.bg;
+  const haze1 = scene.palette.haze1;
+  const haze2 = scene.palette.haze2;
+  const cosA = Math.cos(scene.dustAngle);
+  const sinA = Math.sin(scene.dustAngle);
+  const bandCenterY = scene.bandY * h;
+
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4;
+      const nx = x / w - 0.5;
+      const ny = y / h - 0.5;
+      const rx = nx * cosA + ny * sinA;
+      const ry = -nx * sinA + ny * cosA;
+
+      const warp = domainWarp(nx * 3.2, ny * 3.2, scene.seed + 47);
+      const cloud = fbm(nx * 2.2 + 20.1, ny * 2.2 - 7.4, scene.seed + 89, 5);
+      const fine = fbm(nx * 6.5 - 4.3, ny * 6.5 + 1.7, scene.seed + 121, 4);
+
+      const bandBase = 1 - smoothstep(scene.bandWidth * 0.35, scene.bandWidth, Math.abs(ry - (scene.bandY - 0.5)));
+      const haze = clamp((warp * 0.7 + cloud * 0.6 - 0.42) * 1.6, 0, 1);
+      const filaments = Math.pow(1 - Math.abs(2 * fine - 1), 2.6);
+      const structured = clamp(haze * 0.9 + bandBase * 0.6 + filaments * 0.25 - 0.02, 0, 1);
+      const dust = clamp((filaments * 0.9 + bandBase * 0.6 - haze * 0.15) * scene.dustStrength, 0, 1);
+      const tone = mixRgb(haze1, haze2, clamp(structured * 1.1, 0, 1));
+
+      const bgGrad = 0.035 + 0.085 * (1 - Math.hypot(nx * 1.05, ny * 1.1));
+      let r = bg[0] + tone[0] * structured * scene.hazeStrength + bgGrad * 8;
+      let g = bg[1] + tone[1] * structured * scene.hazeStrength + bgGrad * 10;
+      let b = bg[2] + tone[2] * structured * scene.hazeStrength + bgGrad * 14;
+
+      r = lerp(r, bg[0], dust * 0.38);
+      g = lerp(g, bg[1], dust * 0.38);
+      b = lerp(b, bg[2], dust * 0.42);
+
+      const vignette = 1 - scene.vignette * Math.pow(Math.hypot(nx / 0.82, ny / 0.82), 1.65);
+      const grain = (rnd() - 0.5) * 255 * scene.grain;
+
+      data[i] = clamp(r * vignette + grain, 0, 255);
+      data[i+1] = clamp(g * vignette + grain, 0, 255);
+      data[i+2] = clamp(b * vignette + grain * 1.1, 0, 255);
+      data[i+3] = 255;
+    }
+  }
+  ctx.putImageData(image, 0, 0);
+
+  const gx = w * (0.3 + rnd() * 0.4);
+  const gy = h * (0.25 + rnd() * 0.5);
+  const rr = Math.min(w, h) * (0.45 + rnd() * 0.25);
+  const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, rr);
+  grad.addColorStop(0, rgba(mixRgb(haze1, haze2, 0.5), 0.04));
+  grad.addColorStop(0.5, rgba(haze2, 0.02));
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
+}
+
+function drawStars(ctx, rnd, count, tier, w, h, starBase){
+  for (let i = 0; i < count; i++) {
+    const x = rnd() * w;
+    const y = rnd() * h;
+    const alpha = sampleStarAlpha(rnd, tier);
+    const size = tier === 0 ? (rnd() < 0.94 ? 0.45 : 0.8) : tier === 1 ? (rnd() < 0.88 ? 0.55 : 1.05) : (rnd() < 0.82 ? 0.75 : 1.4);
+    const color = starColor(rnd, starBase);
+    ctx.beginPath();
+    ctx.fillStyle = rgba(color, alpha);
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function renderMidground(ctx,w,h,scene){
+  const rnd = mulberry32(scene.seed + 1009);
+  ctx.globalCompositeOperation = 'screen';
+  drawStars(ctx, rnd, scene.starCountFar, 0, w, h, scene.palette.star);
+  drawStars(ctx, rnd, scene.starCountMid, 1, w, h, scene.palette.star);
+
+  const cloudCount = 6 + ((rnd() * 6) | 0);
+  for (let i = 0; i < cloudCount; i++) {
+    const x = rnd() * w;
+    const y = rnd() * h;
+    const r = Math.min(w, h) * (0.14 + rnd() * 0.22);
+    const c = mixRgb(scene.palette.haze1, scene.palette.haze2, rnd());
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, rgba(c, 0.045 + rnd() * 0.02));
+    g.addColorStop(0.5, rgba(c, 0.025 + rnd() * 0.015));
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+}
+
+function renderForeground(ctx,w,h,scene){
+  const rnd = mulberry32(scene.seed + 2027);
+  ctx.globalCompositeOperation = 'screen';
+  drawStars(ctx, rnd, scene.starCountNear, 2, w, h, scene.palette.star);
+
+  for (let i = 0; i < scene.brightCount; i++) {
+    const x = rnd() * w;
+    const y = rnd() * h;
+    const s = 1.8 + rnd() * 2.8;
+    const color = starColor(rnd, scene.palette.star);
+    const g = ctx.createRadialGradient(x, y, 0, x, y, s * 8);
+    g.addColorStop(0, rgba(color, 0.18));
+    g.addColorStop(0.2, rgba(color, 0.05));
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(x - s * 8, y - s * 8, s * 16, s * 16);
+
+    ctx.beginPath();
+    ctx.fillStyle = rgba([255,255,255], 0.7);
+    ctx.arc(x, y, s * 0.34, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+`;
+    const blob = new Blob([source], { type: 'application/javascript' });
+    return new Worker(URL.createObjectURL(blob));
+  }
+
+  function ensureWorker() {
+    if (worker) return;
+    worker = createWorker();
+    worker.onmessage = (e) => {
+      const msg = e.data;
+      if (msg.type !== 'frame') return;
+      back = msg.layers;
+      fade = 0;
+      pending = false;
+    };
+  }
+
+  function closeLayers(layers) {
+    if (!layers) return;
+    for (const layer of layers) {
+      if (layer && layer.close) layer.close();
+    }
+  }
+
+  function renderScene(forceNew) {
+    ensureWorker();
+    if (forceNew || !scene) {
+      scene = makeScene(currentSeed);
+      phaseA = Math.random() * Math.PI * 2;
+      phaseB = Math.random() * Math.PI * 2;
+      updateMeta();
+    }
+    if (pending) return;
+    pending = true;
+    worker.postMessage({ type: 'render', width, height, dpr, scene });
+  }
+
+  function drawLayer(img, alpha, dx, dy, extraScale = 1) {
+    if (!img) return;
+    const scale = 1.01 * extraScale;
+    const dw = width * scale;
+    const dh = height * scale;
+    const ox = (width - dw) * 0.5 + dx;
+    const oy = (height - dh) * 0.5 + dy;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(img, ox, oy, dw, dh);
+    ctx.restore();
+  }
+
+  function renderComposite(layers, alpha, driftMul) {
+    if (!layers) return;
+    const [bg, mid, fg] = layers;
+    const t = driftT;
+    const dx1 = Math.sin(t * 0.03 + phaseA) * scene.drift1x * driftMul;
+    const dy1 = Math.cos(t * 0.024 + phaseA * 0.7) * scene.drift1y * driftMul;
+    const dx2 = Math.sin(t * 0.052 + phaseB) * scene.drift2x * driftMul;
+    const dy2 = Math.cos(t * 0.041 + phaseB * 0.8) * scene.drift2y * driftMul;
+    const tw = 1 + Math.sin(t * scene.twinkleRate) * scene.twinkleDepth;
+
+    drawLayer(bg, alpha, dx1 * 0.18, dy1 * 0.18, 1.0);
+    drawLayer(mid, alpha, dx1 * 0.45 + dx2 * 0.12, dy1 * 0.45 + dy2 * 0.12, 1.0);
+    drawLayer(fg, alpha * tw, dx2, dy2, 1.0);
+
+    ctx.save();
+    ctx.globalAlpha = alpha * scene.crossfadeTint;
+    ctx.fillStyle = 'rgba(220,230,255,0.35)';
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+
+  function frame(ts) {
+    const dt = Math.min(0.05, (ts - lastTs) / 1000);
+    lastTs = ts;
+    if (driftOn) driftT += dt;
+
+    ctx.clearRect(0, 0, width, height);
+
+    if (back && fade < 1) {
+      fade = Math.min(1, fade + dt / fadeDuration);
+      renderComposite(front, 1 - fade, 0.85);
+      renderComposite(back, fade, 1);
+      if (fade >= 1) {
+        closeLayers(front);
+        front = back;
+        back = null;
+      }
+    } else {
+      renderComposite(front, 1, 1);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  regenBtn.addEventListener('click', () => renderScene(true));
+  shuffleBtn.addEventListener('click', () => {
+    currentSeed = (Math.random() * 0xffffffff) >>> 0;
+    renderScene(true);
+  });
+  toggleBtn.addEventListener('click', () => {
+    driftOn = !driftOn;
+    toggleBtn.textContent = driftOn ? 'pause drift' : 'resume drift';
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'r' || e.key === 'R') renderScene(true);
+    if (e.key === ' ') {
+      e.preventDefault();
+      driftOn = !driftOn;
+      toggleBtn.textContent = driftOn ? 'pause drift' : 'resume drift';
+    }
+  });
+
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+  renderScene(true);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
