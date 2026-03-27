@@ -1,5 +1,5 @@
-const SHELL_CACHE = "cocktails-shell-v3";
-const DATA_CACHE = "cocktails-data-v3";
+const SHELL_CACHE = "cocktails-shell-v4";
+const DATA_CACHE = "cocktails-data-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -30,6 +30,12 @@ self.addEventListener("activate", (event) => {
     ),
   );
   self.clients.claim();
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("fetch", (event) => {
@@ -66,7 +72,7 @@ async function cacheFirst(request, cacheName) {
 async function networkFirst(request, cacheName) {
   const cache = await caches.open(cacheName);
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, { cache: "no-store" });
     if (response.ok) {
       cache.put(request, response.clone());
       return response;

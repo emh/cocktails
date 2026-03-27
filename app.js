@@ -1348,7 +1348,38 @@ function hookUi() {
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || !window.isSecureContext) return;
   try {
-    await navigator.serviceWorker.register("./sw.js");
+    let isRefreshing = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (isRefreshing) return;
+      isRefreshing = true;
+      window.location.reload();
+    });
+
+    const registration = await navigator.serviceWorker.register("./sw.js", {
+      updateViaCache: "none",
+    });
+
+    const activateUpdate = (worker) => {
+      if (!worker) return;
+      worker.postMessage({ type: "SKIP_WAITING" });
+    };
+
+    if (registration.waiting) {
+      activateUpdate(registration.waiting);
+    }
+
+    registration.addEventListener("updatefound", () => {
+      const installingWorker = registration.installing;
+      if (!installingWorker) return;
+
+      installingWorker.addEventListener("statechange", () => {
+        if (installingWorker.state === "installed" && navigator.serviceWorker.controller) {
+          activateUpdate(installingWorker);
+        }
+      });
+    });
+
+    await registration.update();
   } catch (error) {
     console.warn("Service worker registration failed", error);
   }
