@@ -157,7 +157,10 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 44px;
   width: 44px;
+  min-width: 44px;
+  height: 44px;
   min-height: 44px;
   padding: 0;
   cursor: pointer;
@@ -206,7 +209,7 @@ button {
   width: 100%;
   min-width: 0;
   padding: 12px 14px;
-  font-size: 0.8rem;
+  font-size: 16px;
   font-weight: 450;
   letter-spacing: 0.01em;
   outline: none;
@@ -423,12 +426,12 @@ button {
 .search-panel {
   position: absolute;
   top: max(72px, calc(env(safe-area-inset-top) + 72px));
+  left: auto;
   right: max(16px, env(safe-area-inset-right));
   bottom: max(16px, env(safe-area-inset-bottom));
   width: min(380px, calc(100vw - 32px));
   z-index: 23;
-  display: block;
-  padding: 18px 16px 16px;
+  padding: 0;
   border-radius: 18px;
   background: rgba(10, 16, 31, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -451,8 +454,11 @@ button {
   align-content: start;
   gap: 12px;
   height: 100%;
-  overflow: auto;
-  padding-right: 2px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 16px 16px;
 }
 
 .favorites-empty {
@@ -525,10 +531,6 @@ button {
   padding: 0 14px 14px;
 }
 
-.search-result-link {
-  padding: 14px;
-}
-
 .saved-card-title {
   margin: 0;
   font-family: var(--font-display);
@@ -538,8 +540,32 @@ button {
   letter-spacing: -0.01em;
 }
 
-.search-result-link .saved-card-title {
-  margin-bottom: 12px;
+.search-result-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 68px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(24, 35, 65, 0.92), rgba(12, 18, 36, 0.94));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+  appearance: none;
+  -webkit-appearance: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  flex: none;
+}
+
+.search-result-name {
+  display: block;
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: 0;
 }
 
 .saved-card-ingredients {
@@ -695,15 +721,13 @@ button {
   }
 
   .search-panel {
-    inset: 0;
-    width: auto;
-    padding:
-      max(calc(env(safe-area-inset-top) + 72px), 72px)
-      max(12px, env(safe-area-inset-right))
-      max(12px, env(safe-area-inset-bottom))
-      max(12px, env(safe-area-inset-left));
+    top: max(calc(env(safe-area-inset-top) + 86px), 86px);
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
     border: 0;
-    border-radius: 0;
+    width: auto;
+    border-radius: 16px;
     background: rgba(7, 10, 20, 0.97);
     box-shadow: none;
   }
@@ -715,7 +739,7 @@ button {
 
   .search-results {
     gap: 10px;
-    padding-right: 0;
+    padding: 0;
   }
 
   .saved-card-head {
@@ -726,8 +750,9 @@ button {
     padding: 0 12px 12px;
   }
 
-  .search-result-link {
-    padding: 12px;
+  .search-result-item {
+    min-height: 62px;
+    padding: 14px 16px;
   }
 
   .helper-copy,

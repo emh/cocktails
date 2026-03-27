@@ -82,6 +82,21 @@ function byId(id) {
   return state.graphData?.nodesById.get(id) ?? null;
 }
 
+function isAppleMobileDevice() {
+  const userAgent = navigator.userAgent || "";
+  return /iPhone|iPad|iPod/i.test(userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
+
+function preventAppleSearchZoom() {
+  if (!isAppleMobileDevice()) return;
+  const viewportMeta = document.getElementById("viewportMeta");
+  if (!viewportMeta) return;
+  viewportMeta.setAttribute(
+    "content",
+    "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
+  );
+}
+
 function syncViewportHeight() {
   const viewportHeight = Math.max(
     window.innerHeight || 0,
@@ -401,25 +416,15 @@ function searchCocktails(query, limit = SEARCH_LIMIT) {
 }
 
 function buildSearchResultMarkup(result) {
-  const matchingIngredientSet = new Set(result.matchingIngredients.map((ingredient) => lc(ingredient)));
-  const matchedItems = [];
-  const remainingItems = [];
-
-  for (const item of result.node.features.items || []) {
-    if (matchingIngredientSet.has(lc(item.ingredient))) matchedItems.push(item);
-    else remainingItems.push(item);
-  }
-
-  const items = [...matchedItems, ...remainingItems].slice(0, 4);
   return `
-    <article class="saved-card search-result-card" data-search-card="${escapeHtml(result.id)}">
-      <button class="saved-card-link search-result-link" type="button" data-search-open-id="${escapeHtml(result.id)}" aria-label="Open ${escapeHtml(result.node.name)}">
-        <div class="saved-card-title">${escapeHtml(result.node.name)}</div>
-        <div class="saved-card-ingredients">
-          ${buildIngredientRows(items, 4)}
-        </div>
-      </button>
-    </article>
+    <button
+      class="search-result-item"
+      type="button"
+      data-search-open-id="${escapeHtml(result.id)}"
+      aria-label="Open ${escapeHtml(result.node.name)}"
+    >
+      <span class="search-result-name">${escapeHtml(result.node.name)}</span>
+    </button>
   `;
 }
 
@@ -1571,11 +1576,6 @@ function hookUi() {
     sizeAstroBackground();
     queueAstroScene(false);
   });
-  window.visualViewport?.addEventListener("scroll", () => {
-    syncViewportHeight();
-    sizeAstroBackground();
-    queueAstroScene(false);
-  });
 }
 
 async function registerServiceWorker() {
@@ -1619,6 +1619,7 @@ async function registerServiceWorker() {
 }
 
 async function bootstrap() {
+  preventAppleSearchZoom();
   syncViewportHeight();
   setAppState("loading", "Loading cocktail graph…");
   setStatus("Loading cocktail graph…");
