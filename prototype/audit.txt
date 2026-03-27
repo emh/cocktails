@@ -1,0 +1,256 @@
+Audit written to cocktails_audit.json
+
+=== Totals ===
+Cocktails: 474
+Roles: {
+  acid: 131,
+  base_spirit: 410,
+  bittering_agent: 52,
+  dairy: 79,
+  effervescence: 53,
+  egg: 22,
+  fortified_wine: 52,
+  garnish: 83,
+  juice: 142,
+  liqueur_modifier: 154,
+  other: 569,
+  sweetener: 131
+}
+Confidence: { high: 1660, low: 201, medium: 17 }
+
+=== Top role=other ingredients ===
+  25  ice
+  12  1/2 lemon
+  11  carbonated water
+  11  coffee
+  11  cup sugar
+  11  vanilla extract
+  10  orange
+  10  salt
+   8  absinthe
+   8  superfine sugar
+   8  water
+   7  grand marnier
+   7  peach schnapps
+   6  cloves
+   6  cointreau
+   6  galliano
+   6  sweet and sour
+   5  beer
+   5  cups water
+   5  elderflower cordial
+   5  red wine
+   5  whole egg
+   4  1/2 lime
+   4  cinnamon
+   4  coca-cola
+   4  creme de cassis
+   4  crown royal
+   4  cup yoghurt
+   4  lemon-lime soda
+   4  olive
+
+=== Top confidence=low ingredients ===
+  12  1/2 lemon
+  10  carbonated water
+   9  ice
+   7  sugar
+   6  ginger ale
+   6  nutmeg
+   5  soda water
+   5  top soda water
+   4  1/2 lime
+   4  whipped cream
+   3  coffee
+   3  lemon peel
+   3  milk
+   3  orange juice
+   2  1/4 lemon
+   2  crushed ice
+   2  garnish with orange peel
+   2  garnish with rosemary
+   2  grenadine
+   2  lemon
+   2  lemonade
+   2  lime
+   2  orange spiral
+   2  sherbet
+   2  splash of soda water
+   1  , orange carbonated soft drink
+   1  1 lime
+   1  1 lime juice
+   1  1 wedge lemon
+   1  2cl lemon juice
+
+=== Brand-like ingredients ===
+  17  kahlua
+  10  maraschino luxardo
+   6  bacardi 151 proof rum
+   5  bitter campari
+   5  campari
+   5  coca-cola
+   4  aperol
+   4  crown royal
+   3  bacardi limon
+   3  jack daniels
+   3  wild turkey
+   2  7-up
+   1  -12 oz coca-cola
+   1  bacardi sugar
+   1  cherry brandy luxardo
+   1  dl coca-cola
+   1  dr. pepper
+   1  float bacardi 151 proof rum
+   1  jim beam
+   1  smirnoff red label vodka
+   1  smirnoff vodka
+   1  splash coca-cola
+
+=== Weird starting ingredients ===
+   2  with soda water
+   1  a dash of angostura bitters
+   1  a splash of soda water
+   1  añejo rum
+   1  with ginger ale
+   1  with sparkling wine
+
+=== Weird units ===
+  12  twist
+   3  fifth
+   3  pint
+   2  scoop
+
+=== Role mismatches ===
+
+  42  other -> sweetener
+  - Caipirinha: raw="4 Teaspoons White Cane Sugar" ingredient="white cane sugar" role="other" unit="tsp" confidence="high"
+  - Coffee-Vodka: raw="2 cups white Sugar" ingredient="cups white sugar" role="other" unit="" confidence="high"
+  - Coffee Liqueur: raw="2 1/2 cups Sugar" ingredient="cups sugar" role="other" unit="" confidence="high"
+  - Cranberry Punch: raw="1 1/2 cup Sugar" ingredient="cup sugar" role="other" unit="" confidence="high"
+  - Daiquiri: raw="2 Bar Spoons Superfine Sugar" ingredient="superfine sugar" role="other" unit="barspoon" confidence="high"
+
+  38  other -> effervescence
+  - Avalon: raw="Lemonade" ingredient="lemonade" role="other" unit="" confidence="low"
+  - Cuba Libre: raw="120 ml Cola" ingredient="cola" role="other" unit="ml" confidence="high"
+  - Citrus Coke: raw="2 parts Coca-Cola" ingredient="coca-cola" role="other" unit="part" confidence="high"
+  - Chicago Fizz: raw="Carbonated water" ingredient="carbonated water" role="other" unit="" confidence="low"
+  - Coke and Drops: raw="1 dl Coca-Cola" ingredient="dl coca-cola" role="other" unit="" confidence="high"
+
+  35  other -> liqueur_modifier
+  - A1: raw="1 Shot Grand Marnier" ingredient="grand marnier" role="other" unit="shot" confidence="high"
+  - Affair: raw="2 oz Strawberry schnapps" ingredient="strawberry schnapps" role="other" unit="oz" confidence="high"
+  - Aviation: raw="1 Bar Spoon Crème de Violette" ingredient="crème de violette" role="other" unit="barspoon" confidence="high"
+  - Alexander: raw="30 ml Crème de Cacao (Brown)" ingredient="crème de cacao" role="other" unit="ml" confidence="high"
+  - B-52: raw="1/3 Grand Marnier" ingredient="grand marnier" role="other" unit="" confidence="high"
+
+  17  base_spirit -> effervescence
+  - Cream Soda: raw="Ginger ale" ingredient="ginger ale" role="base_spirit" unit="" confidence="low"
+  - Cranberry Punch: raw="2 qt Ginger ale" ingredient="qt ginger ale" role="base_spirit" unit="" confidence="high"
+  - Dragonfly: raw="4 oz Ginger ale" ingredient="ginger ale" role="base_spirit" unit="oz" confidence="high"
+  - Dark and Stormy: raw="10 cl Ginger Beer" ingredient="ginger beer" role="base_spirit" unit="cl" confidence="high"
+  - GG: raw="Ginger ale" ingredient="ginger ale" role="base_spirit" unit="" confidence="low"
+
+  17  dairy -> liqueur_modifier
+  - ABC: raw="1/3 Baileys irish cream" ingredient="irish cream liqueur" role="dairy" unit="" confidence="high"
+  - B-52: raw="1/3 Baileys irish cream" ingredient="irish cream liqueur" role="dairy" unit="" confidence="high"
+  - Big Red: raw="1/2 oz Irish cream" ingredient="irish cream liqueur" role="dairy" unit="oz" confidence="high"
+  - Bumble Bee: raw="1/3 oz Baileys irish cream" ingredient="irish cream liqueur" role="dairy" unit="oz" confidence="high"
+  - Dirty Nipple: raw="Baileys irish cream" ingredient="irish cream liqueur" role="dairy" unit="" confidence="low"
+
+  16  other -> garnish
+  - Dirty Martini: raw="2 tbsp Olive Brine" ingredient="olive brine" role="other" unit="tbsp" confidence="high"
+  - Dirty Martini: raw="1 Olive" ingredient="olive" role="other" unit="" confidence="high"
+  - Gin Rickey: raw="Garnish Lime" ingredient="garnish lime" role="other" unit="" confidence="low"
+  - Highland Fling Cocktail: raw="1 Olive" ingredient="olive" role="other" unit="" confidence="high"
+  - Jitterbug: raw="Around rim put 1 pinch Sugar" ingredient="around rim put 1 pinch sugar" role="other" unit="" confidence="low"
+
+   3  other -> base_spirit
+  - Duchamp's Punch: raw="5 cl Pisco" ingredient="pisco" role="other" unit="cl" confidence="high"
+  - Pisco Sour: raw="60 ml Pisco" ingredient="pisco" role="other" unit="ml" confidence="high"
+  - Pisco Punch: raw="60 ml Pisco" ingredient="pisco" role="other" unit="ml" confidence="high"
+
+   1  base_spirit -> liqueur_modifier
+  - Oatmeal Cookie: raw="4 parts Butterscotch schnapps" ingredient="butterscotch schnapps" role="base_spirit" unit="part" confidence="high"
+
+   1  garnish -> sweetener
+  - Just a Moonmint: raw="Mint syrup" ingredient="mint syrup" role="garnish" unit="" confidence="low"
+
+   1  juice -> sweetener
+  - Planters Punch: raw="30 ml Sugar Cane Juice" ingredient="sugar cane juice" role="juice" unit="ml" confidence="high"
+
+=== Suspicious parse examples ===
+- Broadside: raw="1 shot 151 proof rum" -> ingredient="151 proof rum" unit="shot"
+- Boston Sour: raw="Juice of 1/2 Lemon" -> ingredient="1/2 lemon" unit=""
+- Cuba Libra: raw="1-2 shot Dark rum" -> ingredient="-2 shot dark rum" unit=""
+- Caipirissima: raw="2-3 oz White rum" -> ingredient="-3 oz white rum" unit=""
+- Chicago Fizz: raw="Juice of 1/2 Lemon" -> ingredient="1/2 lemon" unit=""
+- Coffee-Vodka: raw="2 cups Water" -> ingredient="cups water" unit=""
+- Coffee-Vodka: raw="2 cups white Sugar" -> ingredient="cups white sugar" unit=""
+- Coffee-Vodka: raw="1/2 cup instant Coffee" -> ingredient="cup instant coffee" unit=""
+- Coffee-Vodka: raw="1 1/2 cup Vodka" -> ingredient="cup vodka" unit=""
+- Coffee Liqueur: raw="2 1/2 cups Sugar" -> ingredient="cups sugar" unit=""
+- Coffee Liqueur: raw="2 1/2 cups Water" -> ingredient="cups water" unit=""
+- Cranberry Punch: raw="4 cups Cranberry juice" -> ingredient="cups cranberry juice" unit=""
+- Cranberry Punch: raw="1 1/2 cup Sugar" -> ingredient="cup sugar" unit=""
+- Cranberry Punch: raw="4 cups Pineapple juice" -> ingredient="cups pineapple juice" unit=""
+- Dirty Martini: raw="70ml/2fl oz Vodka" -> ingredient="70ml/2fl oz vodka" unit=""
+- Drinking Chocolate: raw="6-8 oz Milk" -> ingredient="-8 oz milk" unit=""
+- Egg Nog #4: raw="1/4 cup Sugar" -> ingredient="cup sugar" unit=""
+- Egg Nog #4: raw="2 cups Milk" -> ingredient="cups milk" unit=""
+- Egg Nog #4: raw="1/2 cup Light rum" -> ingredient="cup light rum" unit=""
+- Egg Nog #4: raw="1/2 cup Bourbon" -> ingredient="cup bourbon" unit=""
+- Egg Nog #4: raw="1 cup Whipping cream" -> ingredient="cup whipping cream" unit=""
+- Egg Nog #4: raw="1/4 cup Sugar" -> ingredient="cup sugar" unit=""
+- Egg Nog - Healthy: raw="1/2 cup Egg" -> ingredient="cup egg" unit=""
+- Egg Nog - Healthy: raw="3/4 cup skimmed Milk" -> ingredient="cup skimmed milk" unit=""
+- Egg-Nog - Classic Cooked: raw="1/4 cup Sugar" -> ingredient="cup sugar" unit=""
+
+=== Phrasey leftovers ===
+  12  1/2 lemon
+   9  lemon peel
+   6  sweet and sour
+   5  egg white
+   4  1/2 lime
+   2  1/4 lemon
+   2  garnish with orange peel
+   2  garnish with rosemary
+   2  orange peel
+   2  sour mix
+   2  splash of soda water
+   2  with soda water
+   1  1 lime
+   1  1 lime juice
+   1  1 wedge lemon
+   1  a dash of angostura bitters
+   1  a splash of soda water
+   1  absinthe
+   1  angostura bitters
+   1  around rim put 1 pinch sugar
+   1  coca-cola
+   1  cream
+   1  cup cream of coconut
+   1  fill to top with soda water
+   1  fill up with cola
+   1  frozen daiquiri mix
+   1  frozen pina colada mix
+   1  garnish with blackberries
+   1  garnish with kiwi
+   1  garnish with lime
+
+=== Garnish candidates not marked garnish ===
+- Dirty Martini: raw="2 tbsp Olive Brine" ingredient="olive brine" role="other"
+- Dirty Martini: raw="1 Olive" ingredient="olive" role="other"
+- Gin Rickey: raw="Garnish Lime" ingredient="garnish lime" role="other"
+- Highland Fling Cocktail: raw="1 Olive" ingredient="olive" role="other"
+- Jitterbug: raw="Around rim put 1 pinch Sugar" ingredient="around rim put 1 pinch sugar" role="other"
+- Kiwi Martini: raw="Garnish with Kiwi" ingredient="garnish with kiwi" role="other"
+- Lemon Drop: raw="Juice of 1 wedge Lemon" ingredient="1 wedge lemon" role="other"
+- Martini: raw="1 Olive" ingredient="olive" role="other"
+- Mango Mojito: raw="Garnish with Mango" ingredient="garnish with mango" role="other"
+- Orange Rosemary Collins: raw="Garnish with Rosemary" ingredient="garnish with rosemary" role="other"
+- Pink Moon: raw="Garnish with Blackberries" ingredient="garnish with blackberries" role="other"
+- Pineapple Paloma: raw="Garnish with Lime" ingredient="garnish with lime" role="other"
+- Rosemary Blue: raw="Garnish with Rosemary" ingredient="garnish with rosemary" role="other"
+- Spice 75: raw="Garnish with Orange spiral" ingredient="garnish with orange spiral" role="other"
+- Vodka Martini: raw="1 Olive" ingredient="olive" role="other"
+- IBA Tiki: raw="1 pc Gengibre Slice" ingredient="pc gengibre slice" role="other"

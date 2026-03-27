@@ -1,0 +1,3413 @@
+{
+  "file": "cocktails_normalized.json",
+  "totals": {
+    "cocktails": 474,
+    "role_counts": {
+      "acid": 131,
+      "base_spirit": 410,
+      "bittering_agent": 52,
+      "dairy": 79,
+      "effervescence": 53,
+      "egg": 22,
+      "fortified_wine": 52,
+      "garnish": 83,
+      "juice": 142,
+      "liqueur_modifier": 154,
+      "other": 569,
+      "sweetener": 131
+    },
+    "confidence_counts": {
+      "high": 1660,
+      "low": 201,
+      "medium": 17
+    }
+  },
+  "top_other_ingredients": [
+    {
+      "key": "ice",
+      "count": 25
+    },
+    {
+      "key": "1/2 lemon",
+      "count": 12
+    },
+    {
+      "key": "carbonated water",
+      "count": 11
+    },
+    {
+      "key": "coffee",
+      "count": 11
+    },
+    {
+      "key": "cup sugar",
+      "count": 11
+    },
+    {
+      "key": "vanilla extract",
+      "count": 11
+    },
+    {
+      "key": "orange",
+      "count": 10
+    },
+    {
+      "key": "salt",
+      "count": 10
+    },
+    {
+      "key": "absinthe",
+      "count": 8
+    },
+    {
+      "key": "superfine sugar",
+      "count": 8
+    },
+    {
+      "key": "water",
+      "count": 8
+    },
+    {
+      "key": "grand marnier",
+      "count": 7
+    },
+    {
+      "key": "peach schnapps",
+      "count": 7
+    },
+    {
+      "key": "cloves",
+      "count": 6
+    },
+    {
+      "key": "cointreau",
+      "count": 6
+    },
+    {
+      "key": "galliano",
+      "count": 6
+    },
+    {
+      "key": "sweet and sour",
+      "count": 6
+    },
+    {
+      "key": "beer",
+      "count": 5
+    },
+    {
+      "key": "cups water",
+      "count": 5
+    },
+    {
+      "key": "elderflower cordial",
+      "count": 5
+    },
+    {
+      "key": "red wine",
+      "count": 5
+    },
+    {
+      "key": "whole egg",
+      "count": 5
+    },
+    {
+      "key": "1/2 lime",
+      "count": 4
+    },
+    {
+      "key": "cinnamon",
+      "count": 4
+    },
+    {
+      "key": "coca-cola",
+      "count": 4
+    },
+    {
+      "key": "creme de cassis",
+      "count": 4
+    },
+    {
+      "key": "crown royal",
+      "count": 4
+    },
+    {
+      "key": "cup yoghurt",
+      "count": 4
+    },
+    {
+      "key": "lemon-lime soda",
+      "count": 4
+    },
+    {
+      "key": "olive",
+      "count": 4
+    },
+    {
+      "key": "port",
+      "count": 4
+    },
+    {
+      "key": "anis",
+      "count": 3
+    },
+    {
+      "key": "bacardi limon",
+      "count": 3
+    },
+    {
+      "key": "cocoa powder",
+      "count": 3
+    },
+    {
+      "key": "egg yolk",
+      "count": 3
+    },
+    {
+      "key": "everclear",
+      "count": 3
+    },
+    {
+      "key": "goldschlager",
+      "count": 3
+    },
+    {
+      "key": "jack daniels",
+      "count": 3
+    },
+    {
+      "key": "jägermeister",
+      "count": 3
+    },
+    {
+      "key": "lemonade",
+      "count": 3
+    },
+    {
+      "key": "lillet blanc",
+      "count": 3
+    },
+    {
+      "key": "pisco",
+      "count": 3
+    },
+    {
+      "key": "southern comfort",
+      "count": 3
+    },
+    {
+      "key": "sugar cube",
+      "count": 3
+    },
+    {
+      "key": "wild turkey",
+      "count": 3
+    },
+    {
+      "key": "1/4 lemon",
+      "count": 2
+    },
+    {
+      "key": "7-up",
+      "count": 2
+    },
+    {
+      "key": "absolut citron",
+      "count": 2
+    },
+    {
+      "key": "banana",
+      "count": 2
+    },
+    {
+      "key": "bottle red wine",
+      "count": 2
+    },
+    {
+      "key": "chunks pineapple",
+      "count": 2
+    },
+    {
+      "key": "creme de banane",
+      "count": 2
+    },
+    {
+      "key": "crème de cacao",
+      "count": 2
+    },
+    {
+      "key": "crushed ice",
+      "count": 2
+    },
+    {
+      "key": "cup apple",
+      "count": 2
+    },
+    {
+      "key": "cup crushed ice",
+      "count": 2
+    },
+    {
+      "key": "cup half-and-half",
+      "count": 2
+    },
+    {
+      "key": "cup hot water",
+      "count": 2
+    },
+    {
+      "key": "cup instant coffee",
+      "count": 2
+    },
+    {
+      "key": "cup strawberries",
+      "count": 2
+    },
+    {
+      "key": "cups cold water",
+      "count": 2
+    },
+    {
+      "key": "cups sugar",
+      "count": 2
+    },
+    {
+      "key": "cups yoghurt",
+      "count": 2
+    },
+    {
+      "key": "drambuie",
+      "count": 2
+    },
+    {
+      "key": "dry white wine",
+      "count": 2
+    },
+    {
+      "key": "espresso",
+      "count": 2
+    },
+    {
+      "key": "frangelico",
+      "count": 2
+    },
+    {
+      "key": "garnish with rosemary",
+      "count": 2
+    },
+    {
+      "key": "grape kool-aid",
+      "count": 2
+    },
+    {
+      "key": "hot coffee",
+      "count": 2
+    },
+    {
+      "key": "hot damn",
+      "count": 2
+    },
+    {
+      "key": "instant coffee",
+      "count": 2
+    },
+    {
+      "key": "kiwi",
+      "count": 2
+    },
+    {
+      "key": "mango",
+      "count": 2
+    },
+    {
+      "key": "orange spiral",
+      "count": 2
+    },
+    {
+      "key": "passion fruit puree",
+      "count": 2
+    },
+    {
+      "key": "passoa",
+      "count": 2
+    },
+    {
+      "key": "pepper",
+      "count": 2
+    },
+    {
+      "key": "pepsi cola",
+      "count": 2
+    },
+    {
+      "key": "pineapple",
+      "count": 2
+    },
+    {
+      "key": "root beer",
+      "count": 2
+    },
+    {
+      "key": "schweppes russchian",
+      "count": 2
+    },
+    {
+      "key": "sherbet",
+      "count": 2
+    },
+    {
+      "key": "sour mix",
+      "count": 2
+    },
+    {
+      "key": "sprite",
+      "count": 2
+    },
+    {
+      "key": "strawberries",
+      "count": 2
+    },
+    {
+      "key": "surge",
+      "count": 2
+    },
+    {
+      "key": "vanilla",
+      "count": 2
+    },
+    {
+      "key": "white cane sugar",
+      "count": 2
+    },
+    {
+      "key": "white creme de cacao",
+      "count": 2
+    },
+    {
+      "key": "white creme de menthe",
+      "count": 2
+    },
+    {
+      "key": "worcestershire sauce",
+      "count": 2
+    },
+    {
+      "key": "zima",
+      "count": 2
+    },
+    {
+      "key": "-1 cup brown sugar",
+      "count": 1
+    },
+    {
+      "key": "-10 oz cold lemonade",
+      "count": 1
+    },
+    {
+      "key": "-12 oz coca-cola",
+      "count": 1
+    },
+    {
+      "key": "-2 tsp sugar",
+      "count": 1
+    },
+    {
+      "key": "-2 whole black pepper",
+      "count": 1
+    },
+    {
+      "key": "-4 crushed cardamom",
+      "count": 1
+    },
+    {
+      "key": "-4 tsp tea",
+      "count": 1
+    }
+  ],
+  "top_low_confidence_ingredients": [
+    {
+      "key": "1/2 lemon",
+      "count": 12
+    },
+    {
+      "key": "carbonated water",
+      "count": 10
+    },
+    {
+      "key": "ice",
+      "count": 9
+    },
+    {
+      "key": "sugar",
+      "count": 7
+    },
+    {
+      "key": "ginger ale",
+      "count": 6
+    },
+    {
+      "key": "nutmeg",
+      "count": 6
+    },
+    {
+      "key": "soda water",
+      "count": 5
+    },
+    {
+      "key": "top soda water",
+      "count": 5
+    },
+    {
+      "key": "1/2 lime",
+      "count": 4
+    },
+    {
+      "key": "whipped cream",
+      "count": 4
+    },
+    {
+      "key": "coffee",
+      "count": 3
+    },
+    {
+      "key": "lemon peel",
+      "count": 3
+    },
+    {
+      "key": "milk",
+      "count": 3
+    },
+    {
+      "key": "orange juice",
+      "count": 3
+    },
+    {
+      "key": "1/4 lemon",
+      "count": 2
+    },
+    {
+      "key": "crushed ice",
+      "count": 2
+    },
+    {
+      "key": "garnish with orange peel",
+      "count": 2
+    },
+    {
+      "key": "garnish with rosemary",
+      "count": 2
+    },
+    {
+      "key": "grenadine",
+      "count": 2
+    },
+    {
+      "key": "lemon",
+      "count": 2
+    },
+    {
+      "key": "lemonade",
+      "count": 2
+    },
+    {
+      "key": "lime",
+      "count": 2
+    },
+    {
+      "key": "orange spiral",
+      "count": 2
+    },
+    {
+      "key": "sherbet",
+      "count": 2
+    },
+    {
+      "key": "splash of soda water",
+      "count": 2
+    },
+    {
+      "key": ", orange carbonated soft drink",
+      "count": 1
+    },
+    {
+      "key": "1 lime",
+      "count": 1
+    },
+    {
+      "key": "1 lime juice",
+      "count": 1
+    },
+    {
+      "key": "1 wedge lemon",
+      "count": 1
+    },
+    {
+      "key": "2cl lemon juice",
+      "count": 1
+    },
+    {
+      "key": "30ml egg white",
+      "count": 1
+    },
+    {
+      "key": "3cl triple sec",
+      "count": 1
+    },
+    {
+      "key": "4cl gin",
+      "count": 1
+    },
+    {
+      "key": "60ml gin",
+      "count": 1
+    },
+    {
+      "key": "70ml/2fl oz vodka",
+      "count": 1
+    },
+    {
+      "key": "a dash of angostura bitters",
+      "count": 1
+    },
+    {
+      "key": "a splash of soda water",
+      "count": 1
+    },
+    {
+      "key": "about 8 drops tabasco sauce",
+      "count": 1
+    },
+    {
+      "key": "add 10 oz root beer",
+      "count": 1
+    },
+    {
+      "key": "add 250 ml orange juice",
+      "count": 1
+    },
+    {
+      "key": "around rim put 1 pinch sugar",
+      "count": 1
+    },
+    {
+      "key": "bacardi sugar",
+      "count": 1
+    },
+    {
+      "key": "beer",
+      "count": 1
+    },
+    {
+      "key": "black coffee",
+      "count": 1
+    },
+    {
+      "key": "brandy",
+      "count": 1
+    },
+    {
+      "key": "caramel coloring",
+      "count": 1
+    },
+    {
+      "key": "cardamom",
+      "count": 1
+    },
+    {
+      "key": "cherries",
+      "count": 1
+    },
+    {
+      "key": "chocolate syrup",
+      "count": 1
+    },
+    {
+      "key": "chopped cucumber",
+      "count": 1
+    },
+    {
+      "key": "chopped lemon",
+      "count": 1
+    },
+    {
+      "key": "cinnamon",
+      "count": 1
+    },
+    {
+      "key": "cloves",
+      "count": 1
+    },
+    {
+      "key": "coca-cola",
+      "count": 1
+    },
+    {
+      "key": "cocoa powder",
+      "count": 1
+    },
+    {
+      "key": "cranberry juice",
+      "count": 1
+    },
+    {
+      "key": "creme de cassis",
+      "count": 1
+    },
+    {
+      "key": "dry vermouth",
+      "count": 1
+    },
+    {
+      "key": "espresso",
+      "count": 1
+    },
+    {
+      "key": "few dashes angostura bitters",
+      "count": 1
+    },
+    {
+      "key": "few dashes plain water",
+      "count": 1
+    },
+    {
+      "key": "few drops egg white",
+      "count": 1
+    },
+    {
+      "key": "fill ice",
+      "count": 1
+    },
+    {
+      "key": "fill to top with soda water",
+      "count": 1
+    },
+    {
+      "key": "fill up with cola",
+      "count": 1
+    },
+    {
+      "key": "float bacardi 151 proof rum",
+      "count": 1
+    },
+    {
+      "key": "fresca",
+      "count": 1
+    },
+    {
+      "key": "frozen daiquiri mix",
+      "count": 1
+    },
+    {
+      "key": "frozen pina colada mix",
+      "count": 1
+    },
+    {
+      "key": "full glass passion fruit juice",
+      "count": 1
+    },
+    {
+      "key": "full glass tequila",
+      "count": 1
+    },
+    {
+      "key": "full glass water",
+      "count": 1
+    },
+    {
+      "key": "garnish lime",
+      "count": 1
+    },
+    {
+      "key": "garnish mint",
+      "count": 1
+    },
+    {
+      "key": "garnish with blackberries",
+      "count": 1
+    },
+    {
+      "key": "garnish with kiwi",
+      "count": 1
+    },
+    {
+      "key": "garnish with lime",
+      "count": 1
+    },
+    {
+      "key": "garnish with mango",
+      "count": 1
+    },
+    {
+      "key": "garnish with mint",
+      "count": 1
+    },
+    {
+      "key": "garnish with orange spiral",
+      "count": 1
+    },
+    {
+      "key": "gin",
+      "count": 1
+    },
+    {
+      "key": "grape juice",
+      "count": 1
+    },
+    {
+      "key": "ground cayenne pepper",
+      "count": 1
+    },
+    {
+      "key": "ground nutmeg",
+      "count": 1
+    },
+    {
+      "key": "irish cream liqueur",
+      "count": 1
+    },
+    {
+      "key": "kahlua",
+      "count": 1
+    },
+    {
+      "key": "large bottle ginger ale",
+      "count": 1
+    },
+    {
+      "key": "lemon juice",
+      "count": 1
+    },
+    {
+      "key": "lemon-lime soda",
+      "count": 1
+    },
+    {
+      "key": "light cream",
+      "count": 1
+    },
+    {
+      "key": "lime peel",
+      "count": 1
+    },
+    {
+      "key": "mikey bottle rum",
+      "count": 1
+    },
+    {
+      "key": "mini marshmallows",
+      "count": 1
+    },
+    {
+      "key": "mint syrup",
+      "count": 1
+    },
+    {
+      "key": "or lime lemon",
+      "count": 1
+    },
+    {
+      "key": "over ice",
+      "count": 1
+    },
+    {
+      "key": "pods cream",
+      "count": 1
+    },
+    {
+      "key": "rimmed pepper",
+      "count": 1
+    },
+    {
+      "key": "root beer",
+      "count": 1
+    },
+    {
+      "key": "salt",
+      "count": 1
+    }
+  ],
+  "top_ingredients": [
+    {
+      "key": "gin",
+      "count": 86
+    },
+    {
+      "key": "lemon juice",
+      "count": 59
+    },
+    {
+      "key": "vodka",
+      "count": 55
+    },
+    {
+      "key": "lime juice",
+      "count": 50
+    },
+    {
+      "key": "sugar",
+      "count": 40
+    },
+    {
+      "key": "orange juice",
+      "count": 38
+    },
+    {
+      "key": "white rum",
+      "count": 31
+    },
+    {
+      "key": "simple syrup",
+      "count": 29
+    },
+    {
+      "key": "grenadine",
+      "count": 26
+    },
+    {
+      "key": "ice",
+      "count": 25
+    },
+    {
+      "key": "triple sec",
+      "count": 25
+    },
+    {
+      "key": "sweet vermouth",
+      "count": 24
+    },
+    {
+      "key": "dry vermouth",
+      "count": 23
+    },
+    {
+      "key": "pineapple juice",
+      "count": 22
+    },
+    {
+      "key": "lime",
+      "count": 20
+    },
+    {
+      "key": "amaretto",
+      "count": 19
+    },
+    {
+      "key": "angostura bitters",
+      "count": 19
+    },
+    {
+      "key": "cherry",
+      "count": 19
+    },
+    {
+      "key": "egg white",
+      "count": 18
+    },
+    {
+      "key": "lemon peel",
+      "count": 18
+    },
+    {
+      "key": "irish cream liqueur",
+      "count": 17
+    },
+    {
+      "key": "kahlua",
+      "count": 17
+    },
+    {
+      "key": "soda water",
+      "count": 17
+    },
+    {
+      "key": "tequila",
+      "count": 17
+    },
+    {
+      "key": "lemon",
+      "count": 16
+    },
+    {
+      "key": "rum",
+      "count": 14
+    },
+    {
+      "key": "bitters",
+      "count": 13
+    },
+    {
+      "key": "dark rum",
+      "count": 13
+    },
+    {
+      "key": "1/2 lemon",
+      "count": 12
+    },
+    {
+      "key": "brandy",
+      "count": 12
+    },
+    {
+      "key": "orange bitters",
+      "count": 12
+    },
+    {
+      "key": "carbonated water",
+      "count": 11
+    },
+    {
+      "key": "coffee",
+      "count": 11
+    },
+    {
+      "key": "cup sugar",
+      "count": 11
+    },
+    {
+      "key": "scotch",
+      "count": 11
+    },
+    {
+      "key": "vanilla extract",
+      "count": 11
+    },
+    {
+      "key": "cognac",
+      "count": 10
+    },
+    {
+      "key": "cranberry juice",
+      "count": 10
+    },
+    {
+      "key": "light cream",
+      "count": 10
+    },
+    {
+      "key": "maraschino luxardo",
+      "count": 10
+    },
+    {
+      "key": "milk",
+      "count": 10
+    },
+    {
+      "key": "orange",
+      "count": 10
+    },
+    {
+      "key": "salt",
+      "count": 10
+    },
+    {
+      "key": "ginger ale",
+      "count": 9
+    },
+    {
+      "key": "grapefruit juice",
+      "count": 9
+    },
+    {
+      "key": "absinthe",
+      "count": 8
+    },
+    {
+      "key": "maraschino liqueur",
+      "count": 8
+    },
+    {
+      "key": "superfine sugar",
+      "count": 8
+    },
+    {
+      "key": "water",
+      "count": 8
+    },
+    {
+      "key": "cream",
+      "count": 7
+    },
+    {
+      "key": "grand marnier",
+      "count": 7
+    },
+    {
+      "key": "green chartreuse",
+      "count": 7
+    },
+    {
+      "key": "peach schnapps",
+      "count": 7
+    },
+    {
+      "key": "sambuca",
+      "count": 7
+    },
+    {
+      "key": "apricot brandy",
+      "count": 6
+    },
+    {
+      "key": "bacardi 151 proof rum",
+      "count": 6
+    },
+    {
+      "key": "chambord raspberry liqueur",
+      "count": 6
+    },
+    {
+      "key": "cloves",
+      "count": 6
+    },
+    {
+      "key": "cointreau",
+      "count": 6
+    },
+    {
+      "key": "galliano",
+      "count": 6
+    },
+    {
+      "key": "mint",
+      "count": 6
+    },
+    {
+      "key": "nutmeg",
+      "count": 6
+    },
+    {
+      "key": "rye whiskey",
+      "count": 6
+    },
+    {
+      "key": "sweet and sour",
+      "count": 6
+    },
+    {
+      "key": "tonic water",
+      "count": 6
+    },
+    {
+      "key": "apple juice",
+      "count": 5
+    },
+    {
+      "key": "beer",
+      "count": 5
+    },
+    {
+      "key": "bitter campari",
+      "count": 5
+    },
+    {
+      "key": "blended whiskey",
+      "count": 5
+    },
+    {
+      "key": "blue curacao",
+      "count": 5
+    },
+    {
+      "key": "bourbon",
+      "count": 5
+    },
+    {
+      "key": "campari",
+      "count": 5
+    },
+    {
+      "key": "coca-cola",
+      "count": 5
+    },
+    {
+      "key": "cups water",
+      "count": 5
+    },
+    {
+      "key": "elderflower cordial",
+      "count": 5
+    },
+    {
+      "key": "ginger beer",
+      "count": 5
+    },
+    {
+      "key": "irish whiskey",
+      "count": 5
+    },
+    {
+      "key": "orgeat syrup",
+      "count": 5
+    },
+    {
+      "key": "prosecco",
+      "count": 5
+    },
+    {
+      "key": "red wine",
+      "count": 5
+    },
+    {
+      "key": "top soda water",
+      "count": 5
+    },
+    {
+      "key": "whole egg",
+      "count": 5
+    },
+    {
+      "key": "1/2 lime",
+      "count": 4
+    },
+    {
+      "key": "aperol",
+      "count": 4
+    },
+    {
+      "key": "benedictine",
+      "count": 4
+    },
+    {
+      "key": "cherry brandy",
+      "count": 4
+    },
+    {
+      "key": "cinnamon",
+      "count": 4
+    },
+    {
+      "key": "coffee liqueur",
+      "count": 4
+    },
+    {
+      "key": "cream sherry",
+      "count": 4
+    },
+    {
+      "key": "creme de cassis",
+      "count": 4
+    },
+    {
+      "key": "crown royal",
+      "count": 4
+    },
+    {
+      "key": "cup yoghurt",
+      "count": 4
+    },
+    {
+      "key": "cups milk",
+      "count": 4
+    },
+    {
+      "key": "falernum",
+      "count": 4
+    },
+    {
+      "key": "grenadine syrup",
+      "count": 4
+    },
+    {
+      "key": "honey",
+      "count": 4
+    },
+    {
+      "key": "honey syrup",
+      "count": 4
+    },
+    {
+      "key": "lemon-lime soda",
+      "count": 4
+    },
+    {
+      "key": "malibu rum",
+      "count": 4
+    },
+    {
+      "key": "midori melon liqueur",
+      "count": 4
+    }
+  ],
+  "units": [
+    {
+      "key": "oz",
+      "count": 467
+    },
+    {
+      "key": "ml",
+      "count": 359
+    },
+    {
+      "key": "tsp",
+      "count": 115
+    },
+    {
+      "key": "cl",
+      "count": 89
+    },
+    {
+      "key": "shot",
+      "count": 76
+    },
+    {
+      "key": "dash",
+      "count": 64
+    },
+    {
+      "key": "part",
+      "count": 64
+    },
+    {
+      "key": "tbsp",
+      "count": 35
+    },
+    {
+      "key": "drop",
+      "count": 16
+    },
+    {
+      "key": "cube",
+      "count": 15
+    },
+    {
+      "key": "slice",
+      "count": 15
+    },
+    {
+      "key": "twist",
+      "count": 12
+    },
+    {
+      "key": "barspoon",
+      "count": 10
+    },
+    {
+      "key": "l",
+      "count": 9
+    },
+    {
+      "key": "wedge",
+      "count": 6
+    },
+    {
+      "key": "pinch",
+      "count": 5
+    },
+    {
+      "key": "fifth",
+      "count": 3
+    },
+    {
+      "key": "pint",
+      "count": 3
+    },
+    {
+      "key": "sprig",
+      "count": 3
+    },
+    {
+      "key": "scoop",
+      "count": 2
+    },
+    {
+      "key": "handful",
+      "count": 1
+    }
+  ],
+  "weird_starting_ingredients": [
+    {
+      "key": "with soda water",
+      "count": 2
+    },
+    {
+      "key": "a dash of angostura bitters",
+      "count": 1
+    },
+    {
+      "key": "a splash of soda water",
+      "count": 1
+    },
+    {
+      "key": "añejo rum",
+      "count": 1
+    },
+    {
+      "key": "with ginger ale",
+      "count": 1
+    },
+    {
+      "key": "with sparkling wine",
+      "count": 1
+    }
+  ],
+  "brand_like_ingredients": [
+    {
+      "key": "kahlua",
+      "count": 17
+    },
+    {
+      "key": "maraschino luxardo",
+      "count": 10
+    },
+    {
+      "key": "bacardi 151 proof rum",
+      "count": 6
+    },
+    {
+      "key": "bitter campari",
+      "count": 5
+    },
+    {
+      "key": "campari",
+      "count": 5
+    },
+    {
+      "key": "coca-cola",
+      "count": 5
+    },
+    {
+      "key": "aperol",
+      "count": 4
+    },
+    {
+      "key": "crown royal",
+      "count": 4
+    },
+    {
+      "key": "bacardi limon",
+      "count": 3
+    },
+    {
+      "key": "jack daniels",
+      "count": 3
+    },
+    {
+      "key": "wild turkey",
+      "count": 3
+    },
+    {
+      "key": "7-up",
+      "count": 2
+    },
+    {
+      "key": "-12 oz coca-cola",
+      "count": 1
+    },
+    {
+      "key": "bacardi sugar",
+      "count": 1
+    },
+    {
+      "key": "cherry brandy luxardo",
+      "count": 1
+    },
+    {
+      "key": "dl coca-cola",
+      "count": 1
+    },
+    {
+      "key": "dr. pepper",
+      "count": 1
+    },
+    {
+      "key": "float bacardi 151 proof rum",
+      "count": 1
+    },
+    {
+      "key": "jim beam",
+      "count": 1
+    },
+    {
+      "key": "smirnoff red label vodka",
+      "count": 1
+    },
+    {
+      "key": "smirnoff vodka",
+      "count": 1
+    },
+    {
+      "key": "splash coca-cola",
+      "count": 1
+    }
+  ],
+  "weird_units": [
+    {
+      "key": "twist",
+      "count": 12
+    },
+    {
+      "key": "fifth",
+      "count": 3
+    },
+    {
+      "key": "pint",
+      "count": 3
+    },
+    {
+      "key": "scoop",
+      "count": 2
+    }
+  ],
+  "role_mismatches": [
+    {
+      "key": "other -> sweetener",
+      "count": 42,
+      "examples": [
+        {
+          "cocktail": "Caipirinha",
+          "raw": "4 Teaspoons White Cane Sugar",
+          "ingredient": "white cane sugar",
+          "role": "other",
+          "unit": "tsp",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Coffee-Vodka",
+          "raw": "2 cups white Sugar",
+          "ingredient": "cups white sugar",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Coffee Liqueur",
+          "raw": "2 1/2 cups Sugar",
+          "ingredient": "cups sugar",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Cranberry Punch",
+          "raw": "1 1/2 cup Sugar",
+          "ingredient": "cup sugar",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Daiquiri",
+          "raw": "2 Bar Spoons Superfine Sugar",
+          "ingredient": "superfine sugar",
+          "role": "other",
+          "unit": "barspoon",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "key": "other -> effervescence",
+      "count": 38,
+      "examples": [
+        {
+          "cocktail": "Avalon",
+          "raw": "Lemonade",
+          "ingredient": "lemonade",
+          "role": "other",
+          "unit": null,
+          "confidence": "low"
+        },
+        {
+          "cocktail": "Cuba Libre",
+          "raw": "120 ml Cola",
+          "ingredient": "cola",
+          "role": "other",
+          "unit": "ml",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Citrus Coke",
+          "raw": "2 parts Coca-Cola",
+          "ingredient": "coca-cola",
+          "role": "other",
+          "unit": "part",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Chicago Fizz",
+          "raw": "Carbonated water",
+          "ingredient": "carbonated water",
+          "role": "other",
+          "unit": null,
+          "confidence": "low"
+        },
+        {
+          "cocktail": "Coke and Drops",
+          "raw": "1 dl Coca-Cola",
+          "ingredient": "dl coca-cola",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "key": "other -> liqueur_modifier",
+      "count": 35,
+      "examples": [
+        {
+          "cocktail": "A1",
+          "raw": "1 Shot Grand Marnier",
+          "ingredient": "grand marnier",
+          "role": "other",
+          "unit": "shot",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Affair",
+          "raw": "2 oz Strawberry schnapps",
+          "ingredient": "strawberry schnapps",
+          "role": "other",
+          "unit": "oz",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Aviation",
+          "raw": "1 Bar Spoon Crème de Violette",
+          "ingredient": "crème de violette",
+          "role": "other",
+          "unit": "barspoon",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Alexander",
+          "raw": "30 ml Crème de Cacao (Brown)",
+          "ingredient": "crème de cacao",
+          "role": "other",
+          "unit": "ml",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "B-52",
+          "raw": "1/3 Grand Marnier",
+          "ingredient": "grand marnier",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "key": "base_spirit -> effervescence",
+      "count": 17,
+      "examples": [
+        {
+          "cocktail": "Cream Soda",
+          "raw": "Ginger ale",
+          "ingredient": "ginger ale",
+          "role": "base_spirit",
+          "unit": null,
+          "confidence": "low"
+        },
+        {
+          "cocktail": "Cranberry Punch",
+          "raw": "2 qt Ginger ale",
+          "ingredient": "qt ginger ale",
+          "role": "base_spirit",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Dragonfly",
+          "raw": "4 oz Ginger ale",
+          "ingredient": "ginger ale",
+          "role": "base_spirit",
+          "unit": "oz",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Dark and Stormy",
+          "raw": "10 cl Ginger Beer",
+          "ingredient": "ginger beer",
+          "role": "base_spirit",
+          "unit": "cl",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "GG",
+          "raw": "Ginger ale",
+          "ingredient": "ginger ale",
+          "role": "base_spirit",
+          "unit": null,
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "key": "dairy -> liqueur_modifier",
+      "count": 17,
+      "examples": [
+        {
+          "cocktail": "ABC",
+          "raw": "1/3 Baileys irish cream",
+          "ingredient": "irish cream liqueur",
+          "role": "dairy",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "B-52",
+          "raw": "1/3 Baileys irish cream",
+          "ingredient": "irish cream liqueur",
+          "role": "dairy",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Big Red",
+          "raw": "1/2 oz Irish cream",
+          "ingredient": "irish cream liqueur",
+          "role": "dairy",
+          "unit": "oz",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Bumble Bee",
+          "raw": "1/3 oz Baileys irish cream",
+          "ingredient": "irish cream liqueur",
+          "role": "dairy",
+          "unit": "oz",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Dirty Nipple",
+          "raw": "Baileys irish cream",
+          "ingredient": "irish cream liqueur",
+          "role": "dairy",
+          "unit": null,
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "key": "other -> garnish",
+      "count": 16,
+      "examples": [
+        {
+          "cocktail": "Dirty Martini",
+          "raw": "2 tbsp Olive Brine",
+          "ingredient": "olive brine",
+          "role": "other",
+          "unit": "tbsp",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Dirty Martini",
+          "raw": "1 Olive",
+          "ingredient": "olive",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Gin Rickey",
+          "raw": "Garnish Lime",
+          "ingredient": "garnish lime",
+          "role": "other",
+          "unit": null,
+          "confidence": "low"
+        },
+        {
+          "cocktail": "Highland Fling Cocktail",
+          "raw": "1 Olive",
+          "ingredient": "olive",
+          "role": "other",
+          "unit": null,
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Jitterbug",
+          "raw": "Around rim put 1 pinch Sugar",
+          "ingredient": "around rim put 1 pinch sugar",
+          "role": "other",
+          "unit": null,
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "key": "other -> base_spirit",
+      "count": 3,
+      "examples": [
+        {
+          "cocktail": "Duchamp's Punch",
+          "raw": "5 cl Pisco",
+          "ingredient": "pisco",
+          "role": "other",
+          "unit": "cl",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Pisco Sour",
+          "raw": "60 ml Pisco",
+          "ingredient": "pisco",
+          "role": "other",
+          "unit": "ml",
+          "confidence": "high"
+        },
+        {
+          "cocktail": "Pisco Punch",
+          "raw": "60 ml Pisco",
+          "ingredient": "pisco",
+          "role": "other",
+          "unit": "ml",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "key": "base_spirit -> liqueur_modifier",
+      "count": 1,
+      "examples": [
+        {
+          "cocktail": "Oatmeal Cookie",
+          "raw": "4 parts Butterscotch schnapps",
+          "ingredient": "butterscotch schnapps",
+          "role": "base_spirit",
+          "unit": "part",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "key": "garnish -> sweetener",
+      "count": 1,
+      "examples": [
+        {
+          "cocktail": "Just a Moonmint",
+          "raw": "Mint syrup",
+          "ingredient": "mint syrup",
+          "role": "garnish",
+          "unit": null,
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "key": "juice -> sweetener",
+      "count": 1,
+      "examples": [
+        {
+          "cocktail": "Planters Punch",
+          "raw": "30 ml Sugar Cane Juice",
+          "ingredient": "sugar cane juice",
+          "role": "juice",
+          "unit": "ml",
+          "confidence": "high"
+        }
+      ]
+    }
+  ],
+  "phrasey_ingredients": [
+    {
+      "key": "1/2 lemon",
+      "count": 12
+    },
+    {
+      "key": "lemon peel",
+      "count": 9
+    },
+    {
+      "key": "sweet and sour",
+      "count": 6
+    },
+    {
+      "key": "egg white",
+      "count": 5
+    },
+    {
+      "key": "1/2 lime",
+      "count": 4
+    },
+    {
+      "key": "1/4 lemon",
+      "count": 2
+    },
+    {
+      "key": "garnish with orange peel",
+      "count": 2
+    },
+    {
+      "key": "garnish with rosemary",
+      "count": 2
+    },
+    {
+      "key": "orange peel",
+      "count": 2
+    },
+    {
+      "key": "sour mix",
+      "count": 2
+    },
+    {
+      "key": "splash of soda water",
+      "count": 2
+    },
+    {
+      "key": "with soda water",
+      "count": 2
+    },
+    {
+      "key": "1 lime",
+      "count": 1
+    },
+    {
+      "key": "1 lime juice",
+      "count": 1
+    },
+    {
+      "key": "1 wedge lemon",
+      "count": 1
+    },
+    {
+      "key": "a dash of angostura bitters",
+      "count": 1
+    },
+    {
+      "key": "a splash of soda water",
+      "count": 1
+    },
+    {
+      "key": "absinthe",
+      "count": 1
+    },
+    {
+      "key": "angostura bitters",
+      "count": 1
+    },
+    {
+      "key": "around rim put 1 pinch sugar",
+      "count": 1
+    },
+    {
+      "key": "coca-cola",
+      "count": 1
+    },
+    {
+      "key": "cream",
+      "count": 1
+    },
+    {
+      "key": "cup cream of coconut",
+      "count": 1
+    },
+    {
+      "key": "fill to top with soda water",
+      "count": 1
+    },
+    {
+      "key": "fill up with cola",
+      "count": 1
+    },
+    {
+      "key": "frozen daiquiri mix",
+      "count": 1
+    },
+    {
+      "key": "frozen pina colada mix",
+      "count": 1
+    },
+    {
+      "key": "garnish with blackberries",
+      "count": 1
+    },
+    {
+      "key": "garnish with kiwi",
+      "count": 1
+    },
+    {
+      "key": "garnish with lime",
+      "count": 1
+    },
+    {
+      "key": "garnish with mango",
+      "count": 1
+    },
+    {
+      "key": "garnish with mint",
+      "count": 1
+    },
+    {
+      "key": "garnish with orange spiral",
+      "count": 1
+    },
+    {
+      "key": "grand marnier",
+      "count": 1
+    },
+    {
+      "key": "guinness stout",
+      "count": 1
+    },
+    {
+      "key": "honey mix",
+      "count": 1
+    },
+    {
+      "key": "honey mix *",
+      "count": 1
+    },
+    {
+      "key": "lime peel",
+      "count": 1
+    },
+    {
+      "key": "salt",
+      "count": 1
+    },
+    {
+      "key": "sirup of roses",
+      "count": 1
+    },
+    {
+      "key": "soda water",
+      "count": 1
+    },
+    {
+      "key": "splash coca-cola",
+      "count": 1
+    },
+    {
+      "key": "splash lemon-lime soda",
+      "count": 1
+    },
+    {
+      "key": "splash pineapple juice",
+      "count": 1
+    },
+    {
+      "key": "splash sour mix",
+      "count": 1
+    },
+    {
+      "key": "splash sweet and sour",
+      "count": 1
+    },
+    {
+      "key": "top with cola",
+      "count": 1
+    },
+    {
+      "key": "with ginger ale",
+      "count": 1
+    },
+    {
+      "key": "with sparkling wine",
+      "count": 1
+    }
+  ],
+  "suspicious_parse_examples": [
+    {
+      "cocktail": "Broadside",
+      "raw": "1 shot 151 proof rum",
+      "ingredient": "151 proof rum",
+      "role": "base_spirit",
+      "unit": "shot",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Boston Sour",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Cuba Libra",
+      "raw": "1-2 shot Dark rum",
+      "ingredient": "-2 shot dark rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Caipirissima",
+      "raw": "2-3 oz White rum",
+      "ingredient": "-3 oz white rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Chicago Fizz",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Coffee-Vodka",
+      "raw": "2 cups Water",
+      "ingredient": "cups water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Coffee-Vodka",
+      "raw": "2 cups white Sugar",
+      "ingredient": "cups white sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Coffee-Vodka",
+      "raw": "1/2 cup instant Coffee",
+      "ingredient": "cup instant coffee",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Coffee-Vodka",
+      "raw": "1 1/2 cup Vodka",
+      "ingredient": "cup vodka",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Coffee Liqueur",
+      "raw": "2 1/2 cups Sugar",
+      "ingredient": "cups sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Coffee Liqueur",
+      "raw": "2 1/2 cups Water",
+      "ingredient": "cups water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Cranberry Punch",
+      "raw": "4 cups Cranberry juice",
+      "ingredient": "cups cranberry juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Cranberry Punch",
+      "raw": "1 1/2 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Cranberry Punch",
+      "raw": "4 cups Pineapple juice",
+      "ingredient": "cups pineapple juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Dirty Martini",
+      "raw": "70ml/2fl oz Vodka",
+      "ingredient": "70ml/2fl oz vodka",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Drinking Chocolate",
+      "raw": "6-8 oz Milk",
+      "ingredient": "-8 oz milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "1/4 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "2 cups Milk",
+      "ingredient": "cups milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "1/2 cup Light rum",
+      "ingredient": "cup light rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "1/2 cup Bourbon",
+      "ingredient": "cup bourbon",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "1 cup Whipping cream",
+      "ingredient": "cup whipping cream",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog #4",
+      "raw": "1/4 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog - Healthy",
+      "raw": "1/2 cup Egg",
+      "ingredient": "cup egg",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg Nog - Healthy",
+      "raw": "3/4 cup skimmed Milk",
+      "ingredient": "cup skimmed milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Egg-Nog - Classic Cooked",
+      "raw": "1/4 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frosé",
+      "raw": "1/2 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frosé",
+      "raw": "2-3 oz Lemon Juice",
+      "ingredient": "-3 oz lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frappé",
+      "raw": "1/2 cup black Coffee",
+      "ingredient": "cup black coffee",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frappé",
+      "raw": "1/2 cup Milk",
+      "ingredient": "cup milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frappé",
+      "raw": "1-2 tsp Sugar",
+      "ingredient": "-2 tsp sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frisco Sour",
+      "raw": "Juice of 1/4 Lemon",
+      "ingredient": "1/4 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Frisco Sour",
+      "raw": "Juice of 1/2 Lime",
+      "ingredient": "1/2 lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Fruit Shake",
+      "raw": "1 cup fruit Yoghurt",
+      "ingredient": "cup fruit yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Fruit Cooler",
+      "raw": "1 cup Strawberries",
+      "ingredient": "cup strawberries",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Funk and Soul",
+      "raw": "Juice of 1/2 lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Frozen Daiquiri",
+      "raw": "1 cup crushed Ice",
+      "ingredient": "cup crushed ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Fruit Flip-Flop",
+      "raw": "1 cup Yoghurt",
+      "ingredient": "cup yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Fruit Flip-Flop",
+      "raw": "1 cup Fruit juice",
+      "ingredient": "cup fruit juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Gin Sling",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Gin Rickey",
+      "raw": "Juice of 1/2 lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Homemade Kahlua",
+      "raw": "2 1/2 cups Sugar",
+      "ingredient": "cups sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Homemade Kahlua",
+      "raw": "1 cup Corn syrup",
+      "ingredient": "cup corn syrup",
+      "role": "sweetener",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Homemade Kahlua",
+      "raw": "3 cups boiling Water",
+      "ingredient": "cups boiling water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Hot Chocolate to Die for",
+      "raw": "1 cup Half-and-half",
+      "ingredient": "cup half-and-half",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Iced Coffee",
+      "raw": "1/4 cup instant Coffee",
+      "ingredient": "cup instant coffee",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Iced Coffee",
+      "raw": "1/4 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Iced Coffee",
+      "raw": "1/4 cup hot Water",
+      "ingredient": "cup hot water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Iced Coffee",
+      "raw": "4 cups cold Milk",
+      "ingredient": "cups cold milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Irish Cream",
+      "raw": "1 cup Scotch",
+      "ingredient": "cup scotch",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Irish Cream",
+      "raw": "1 1/4 cup Half-and-half",
+      "ingredient": "cup half-and-half",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Imperial Fizz",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Irish Curdling Cow",
+      "raw": "2-3 oz Orange juice",
+      "ingredient": "-3 oz orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jello shots",
+      "raw": "2 cups Vodka",
+      "ingredient": "cups vodka",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jello shots",
+      "raw": "3 cups Water",
+      "ingredient": "cups water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Japanese Fizz",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Just a Moonmint",
+      "raw": "2 cups Milk",
+      "ingredient": "cups milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jack Rose Cocktail",
+      "raw": "Juice of 1/2 Lime",
+      "ingredient": "1/2 lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Jack's Vanilla Coke",
+      "raw": "4-5 Ice",
+      "ingredient": "-5 ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jack's Vanilla Coke",
+      "raw": "10-12 oz Coca-Cola",
+      "ingredient": "-12 oz coca-cola",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Kill the cold Smoothie",
+      "raw": "1 cup hot Water",
+      "ingredient": "cup hot water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Limeade",
+      "raw": "Juice of 1 Lime",
+      "ingredient": "1 lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Lemon Drop",
+      "raw": "Juice of 1 wedge Lemon",
+      "ingredient": "1 wedge lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Lassi Khara",
+      "raw": "1 cup Yoghurt",
+      "ingredient": "cup yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi Khara",
+      "raw": "2 cups cold Water",
+      "ingredient": "cups cold water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi Raita",
+      "raw": "2 cups Yoghurt",
+      "ingredient": "cups yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi Raita",
+      "raw": "4-6 Ice",
+      "ingredient": "-6 ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lemouroudji",
+      "raw": "1 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - Mango",
+      "raw": "2 cups Yoghurt",
+      "ingredient": "cups yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - Mango",
+      "raw": "1/2 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - Mango",
+      "raw": "1 cup iced Water",
+      "ingredient": "cup iced water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - Sweet",
+      "raw": "1 cup Yoghurt",
+      "ingredient": "cup yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - Sweet",
+      "raw": "2 cups cold Water",
+      "ingredient": "cups cold water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lady Love Fizz",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Long Island Tea",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Lemon Elderflower Spritzer",
+      "raw": "1/3 cup Soda Water",
+      "ingredient": "cup soda water",
+      "role": "effervescence",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - A South Indian Drink",
+      "raw": "1/2 cup plain Yoghurt",
+      "ingredient": "cup plain yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi - A South Indian Drink",
+      "raw": "1 1/4 cup cold Water",
+      "ingredient": "cup cold water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Mulled Wine",
+      "raw": "3 cups Water",
+      "ingredient": "cups water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Mulled Wine",
+      "raw": "1 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Mulled Wine",
+      "raw": "1/4 cup Brandy",
+      "ingredient": "cup brandy",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "2 cups Water",
+      "ingredient": "cups water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "3-4 tsp Tea",
+      "ingredient": "-4 tsp tea",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "3-4 crushed Cardamom",
+      "ingredient": "-4 crushed cardamom",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "1-2 whole Black pepper",
+      "ingredient": "-2 whole black pepper",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Orangeade",
+      "raw": "2-3 cl Sugar syrup",
+      "ingredient": "-3 cl sugar syrup",
+      "role": "sweetener",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Orange Scented Hot Chocolate",
+      "raw": "2 cups Milk",
+      "ingredient": "cups milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Orange Scented Hot Chocolate",
+      "raw": "3 2-inch strips Orange peel",
+      "ingredient": "2-inch strips orange peel",
+      "role": "garnish",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Owen's Grandmother's Revenge",
+      "raw": "1 cup crushed Ice",
+      "ingredient": "cup crushed ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Paloma",
+      "raw": "50 ml 100% Agave Tequila",
+      "ingredient": "100% agave tequila",
+      "role": "base_spirit",
+      "unit": "ml",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Penicillin",
+      "raw": "2-3 quarter size sliced fresh ginger",
+      "ingredient": "-3 quarter size sliced fresh ginger",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Pink Panty Pulldowns",
+      "raw": "2 cups Pink lemonade",
+      "ingredient": "cups pink lemonade",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Pink Panty Pulldowns",
+      "raw": "2 cups Vodka",
+      "ingredient": "cups vodka",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Quaker's Cocktail",
+      "raw": "Juice of 1/4 Lemon",
+      "ingredient": "1/4 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Quarter Deck Cocktail",
+      "raw": "Juice of 1/2 Lime",
+      "ingredient": "1/2 lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Radler",
+      "raw": "12 oz 7-Up",
+      "ingredient": "7-up",
+      "role": "other",
+      "unit": "oz",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Orange juice",
+      "ingredient": "-4 oz orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Pineapple juice",
+      "ingredient": "-4 oz pineapple juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Cranberry juice",
+      "ingredient": "-4 oz cranberry juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Royal Gin Fizz",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Rum Milk Punch",
+      "raw": "1 cup Milk",
+      "ingredient": "cup milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Old-fashioned",
+      "raw": "1 tsp 151 proof rum",
+      "ingredient": "151 proof rum",
+      "role": "base_spirit",
+      "unit": "tsp",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sangria",
+      "raw": "1/2 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sangria",
+      "raw": "1 cup Orange juice",
+      "ingredient": "cup orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sangria",
+      "raw": "1 cup Lemon juice",
+      "ingredient": "cup lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Snowball",
+      "raw": "8-10 oz cold Lemonade",
+      "ingredient": "-10 oz cold lemonade",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Scotch Sour",
+      "raw": "Juice of 1/2 Lime",
+      "ingredient": "1/2 lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Shark Attack",
+      "raw": "1 1/2 cup Vodka",
+      "ingredient": "cup vodka",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sweet Bananas",
+      "raw": "2 cups Milk",
+      "ingredient": "cups milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sweet Sangria",
+      "raw": "1 cup Sugar",
+      "ingredient": "cup sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sweet Sangria",
+      "raw": "2 cups hot Water",
+      "ingredient": "cups hot water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Sweet Sangria",
+      "raw": "1 cup Apple",
+      "ingredient": "cup apple",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tia-Maria",
+      "raw": "1 cup Water",
+      "ingredient": "cup water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tia-Maria",
+      "raw": "3/4-1 cup Brown sugar",
+      "ingredient": "-1 cup brown sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tia-Maria",
+      "raw": "1 cup Rum",
+      "ingredient": "cup rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Thai Coffee",
+      "raw": "4-5 whole green Cardamom",
+      "ingredient": "-5 whole green cardamom",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tomato Tang",
+      "raw": "2 cups Tomato juice",
+      "ingredient": "cups tomato juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tomato Tang",
+      "raw": "1-2 tblsp Lemon juice",
+      "ingredient": "-2 tblsp lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tequila Sour",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Thai Iced Tea",
+      "raw": "1/4 cup Thai Tea",
+      "ingredient": "cup thai tea",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Thai Iced Tea",
+      "raw": "1/2 cup boiling Water",
+      "ingredient": "cup boiling water",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tequila Slammer",
+      "raw": "1 part 7-up",
+      "ingredient": "7-up",
+      "role": "other",
+      "unit": "part",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Vesuvio",
+      "raw": "Juice of 1/2 Lemon",
+      "ingredient": "1/2 lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Vodka Slime",
+      "raw": "1 cup Sprite",
+      "ingredient": "cup sprite",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "White Lady",
+      "raw": "4cl Gin",
+      "ingredient": "4cl gin",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "White Lady",
+      "raw": "3cl Triple Sec",
+      "ingredient": "3cl triple sec",
+      "role": "liqueur_modifier",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "White Lady",
+      "raw": "2cl Lemon Juice",
+      "ingredient": "2cl lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Wine Punch",
+      "raw": "1 cup Orange juice",
+      "ingredient": "cup orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Wine Punch",
+      "raw": "1 cup Pineapple juice",
+      "ingredient": "cup pineapple juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Winter Paloma",
+      "raw": "Juice of 1 Lime Juice",
+      "ingredient": "1 lime juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "White Wine Sangria",
+      "raw": "1 cup Strawberries",
+      "ingredient": "cup strawberries",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "White Wine Sangria",
+      "raw": "1 cup Apple",
+      "ingredient": "cup apple",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Whitecap Margarita",
+      "raw": "1 cup Ice",
+      "ingredient": "cup ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Whitecap Margarita",
+      "raw": "1/4 cup Cream of coconut",
+      "ingredient": "cup cream of coconut",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Yoghurt Cooler",
+      "raw": "1 cup Yoghurt",
+      "ingredient": "cup yoghurt",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Yoghurt Cooler",
+      "raw": "1 cup Fruit",
+      "ingredient": "cup fruit",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Zoksel",
+      "raw": "7-Up",
+      "ingredient": "-up",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Zombie",
+      "raw": "1 oz 151 proof rum",
+      "ingredient": "151 proof rum",
+      "role": "base_spirit",
+      "unit": "oz",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Gin Basil Smash",
+      "raw": "60ml Gin",
+      "ingredient": "60ml gin",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Ramos Fizz",
+      "raw": "30ml Egg white",
+      "ingredient": "30ml egg white",
+      "role": "egg",
+      "unit": null,
+      "confidence": "low"
+    }
+  ],
+  "garnish_candidates": [
+    {
+      "cocktail": "Dirty Martini",
+      "raw": "2 tbsp Olive Brine",
+      "ingredient": "olive brine",
+      "role": "other",
+      "unit": "tbsp",
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Dirty Martini",
+      "raw": "1 Olive",
+      "ingredient": "olive",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Gin Rickey",
+      "raw": "Garnish Lime",
+      "ingredient": "garnish lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Highland Fling Cocktail",
+      "raw": "1 Olive",
+      "ingredient": "olive",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jitterbug",
+      "raw": "Around rim put 1 pinch Sugar",
+      "ingredient": "around rim put 1 pinch sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Kiwi Martini",
+      "raw": "Garnish with Kiwi",
+      "ingredient": "garnish with kiwi",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Lemon Drop",
+      "raw": "Juice of 1 wedge Lemon",
+      "ingredient": "1 wedge lemon",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Martini",
+      "raw": "1 Olive",
+      "ingredient": "olive",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Mango Mojito",
+      "raw": "Garnish with Mango",
+      "ingredient": "garnish with mango",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Orange Rosemary Collins",
+      "raw": "Garnish with Rosemary",
+      "ingredient": "garnish with rosemary",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Pink Moon",
+      "raw": "Garnish with Blackberries",
+      "ingredient": "garnish with blackberries",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Pineapple Paloma",
+      "raw": "Garnish with Lime",
+      "ingredient": "garnish with lime",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Rosemary Blue",
+      "raw": "Garnish with Rosemary",
+      "ingredient": "garnish with rosemary",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Spice 75",
+      "raw": "Garnish with Orange spiral",
+      "ingredient": "garnish with orange spiral",
+      "role": "other",
+      "unit": null,
+      "confidence": "low"
+    },
+    {
+      "cocktail": "Vodka Martini",
+      "raw": "1 Olive",
+      "ingredient": "olive",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "IBA Tiki",
+      "raw": "1 pc Gengibre Slice",
+      "ingredient": "pc gengibre slice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    }
+  ],
+  "range_examples": [
+    {
+      "cocktail": "Cuba Libra",
+      "raw": "1-2 shot Dark rum",
+      "ingredient": "-2 shot dark rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Caipirissima",
+      "raw": "2-3 oz White rum",
+      "ingredient": "-3 oz white rum",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Drinking Chocolate",
+      "raw": "6-8 oz Milk",
+      "ingredient": "-8 oz milk",
+      "role": "dairy",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frosé",
+      "raw": "2-3 oz Lemon Juice",
+      "ingredient": "-3 oz lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Frappé",
+      "raw": "1-2 tsp Sugar",
+      "ingredient": "-2 tsp sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Irish Curdling Cow",
+      "raw": "2-3 oz Orange juice",
+      "ingredient": "-3 oz orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jack's Vanilla Coke",
+      "raw": "4-5 Ice",
+      "ingredient": "-5 ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Jack's Vanilla Coke",
+      "raw": "10-12 oz Coca-Cola",
+      "ingredient": "-12 oz coca-cola",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Lassi Raita",
+      "raw": "4-6 Ice",
+      "ingredient": "-6 ice",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "3-4 tsp Tea",
+      "ingredient": "-4 tsp tea",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "3-4 crushed Cardamom",
+      "ingredient": "-4 crushed cardamom",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Masala Chai",
+      "raw": "1-2 whole Black pepper",
+      "ingredient": "-2 whole black pepper",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Orangeade",
+      "raw": "2-3 cl Sugar syrup",
+      "ingredient": "-3 cl sugar syrup",
+      "role": "sweetener",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Penicillin",
+      "raw": "2-3 quarter size sliced fresh ginger",
+      "ingredient": "-3 quarter size sliced fresh ginger",
+      "role": "base_spirit",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Orange juice",
+      "ingredient": "-4 oz orange juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Pineapple juice",
+      "ingredient": "-4 oz pineapple juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Rum Runner",
+      "raw": "3-4 oz Cranberry juice",
+      "ingredient": "-4 oz cranberry juice",
+      "role": "juice",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Snowball",
+      "raw": "8-10 oz cold Lemonade",
+      "ingredient": "-10 oz cold lemonade",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tia-Maria",
+      "raw": "3/4-1 cup Brown sugar",
+      "ingredient": "-1 cup brown sugar",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Thai Coffee",
+      "raw": "4-5 whole green Cardamom",
+      "ingredient": "-5 whole green cardamom",
+      "role": "other",
+      "unit": null,
+      "confidence": "high"
+    },
+    {
+      "cocktail": "Tomato Tang",
+      "raw": "1-2 tblsp Lemon juice",
+      "ingredient": "-2 tblsp lemon juice",
+      "role": "acid",
+      "unit": null,
+      "confidence": "high"
+    }
+  ]
+}
