@@ -1,0 +1,17 @@
+{
+  "name": "Cocktail Constellation",
+  "short_name": "Cocktails",
+  "description": "Explore cocktails through a mobile-friendly constellation graph.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070b16",
+  "theme_color": "#0b1020",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
