@@ -56,6 +56,16 @@ function byId(id) {
   return state.graphData?.nodesById.get(id) ?? null;
 }
 
+function syncViewportHeight() {
+  const viewportHeight = Math.max(
+    window.innerHeight || 0,
+    Math.round(window.visualViewport?.height || 0),
+  );
+  if (viewportHeight > 0) {
+    document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
+  }
+}
+
 function fmtAmount(amount, unit) {
   if (amount == null) return "";
   const rounded = Number.isInteger(amount) ? String(amount) : `${Math.round(amount * 100) / 100}`;
@@ -1208,6 +1218,8 @@ function handleSearch() {
 }
 
 function hookUi() {
+  syncViewportHeight();
+
   document.getElementById("listToggleBtn").addEventListener("click", () => {
     if (!state.graphData) return;
     if (state.searchOpen) {
@@ -1338,11 +1350,15 @@ function hookUi() {
   });
 
   window.addEventListener("resize", () => {
+    syncViewportHeight();
     if (state.currentId) {
       repositionBackgroundLights(state.currentId);
       void renderGraph(byId(state.currentId));
     }
   });
+
+  window.visualViewport?.addEventListener("resize", syncViewportHeight);
+  window.visualViewport?.addEventListener("scroll", syncViewportHeight);
 }
 
 async function registerServiceWorker() {
@@ -1386,6 +1402,7 @@ async function registerServiceWorker() {
 }
 
 async function bootstrap() {
+  syncViewportHeight();
   setAppState("loading", "Loading cocktail graph…");
   setStatus("Loading cocktail graph…");
 
